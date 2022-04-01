@@ -1,0 +1,11 @@
+{
+    "book": [
+        {
+            "bId": 1,
+            "bName": "Magic of INT203",
+            "bDesc": "Vue to the moon",
+            "bStatus": "available",
+            "bPrice": 203.0
+        }
+    ]
+}

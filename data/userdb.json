@@ -1,0 +1,10 @@
+{
+    "user": [
+        {
+            "uId": 1,
+            "uName": "Sage",
+            "uBalance": 5000.0,
+            "uCart": []
+        }
+    ]
+}

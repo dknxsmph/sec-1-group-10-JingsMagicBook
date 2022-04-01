@@ -7,7 +7,7 @@
     "dev": "concurrently \"vite\" \"npm run backend\"",
     "build": "vite build",
     "preview": "vite preview",
-    "backend": "json-server --watch ./data/db.json --port 5000"
+    "backend": "json-server --watch ./data/db.js --port 5000"
   },
   "dependencies": {
     "json-server": "^0.17.0",
