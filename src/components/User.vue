@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-    users: {
+    user: {
         type: Object,
         require: true
     }
@@ -8,16 +8,24 @@ defineProps({
 </script>
 
 <template>
-    <div>
-        <h1>Who's Renting</h1>
-        <ul>
-            <li v-for="(user, index) in users" :key="index">
-                {{ user.uName }}
-                <img :src="user.uImg" />
-            </li>
-        </ul>
+    <div class="user-box">
+        <img class="profile-img" :src="user.uImg" :alt="`${user.uName}'s Profile image`"/>
+        <div>{{ user.uName }}</div>
     </div>
 </template>
  
-<style>
+<style scoped>
+.user-box {
+    width: 60%;
+    padding: 8px;
+    transition: all .3s ease-out;
+}
+.user-box:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+img.profile-img {
+    width: 100%;
+}
 </style>
