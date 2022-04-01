@@ -8,6 +8,7 @@ const getUsers = async () => {
   try {
     const res = await fetch('http://localhost:5000/users', { method: 'GET' })
     return await res.json()
+    
   } catch (err) {
     console.log(err)
   }
@@ -38,10 +39,14 @@ onBeforeMount(async () => {
 <style scoped>
 #login {
     background-image: url(../assets/background-img/bg-login.jpg);
+    color: white;
     background-repeat: no-repeat;
     background-size: cover;
     padding: 30px 120px 40px 120px;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .box-user {
@@ -60,6 +65,7 @@ onBeforeMount(async () => {
     position: relative;
     height: 100%;
     padding: 60px 0;
+    font-family: 'Skranji', cursive;
 }
 
 .icon-login {
@@ -68,9 +74,18 @@ onBeforeMount(async () => {
     left: 8%;
     transform: rotate(-10deg);
     width: 152px;
+    filter: drop-shadow(0 0 2rem rgba(255, 255, 255, 0.25));
 }
 
-.login-content h1 {
+.login-header h1 {
     margin-bottom: 25px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.login-header h3 {
+    font-size: 24px;
+    letter-spacing: 2px;
+    font-weight: lighter;
 }
 </style>

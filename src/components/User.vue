@@ -10,7 +10,7 @@ defineProps({
 <template>
     <div class="user-box">
         <img class="profile-img" :src="user.uImg" :alt="`${user.uName}'s Profile image`"/>
-        <div>{{ user.uName }}</div>
+        <h3>{{ user.uName }}</h3>
     </div>
 </template>
  
@@ -27,5 +27,9 @@ defineProps({
 
 img.profile-img {
     width: 100%;
+}
+.user-box > h3{
+    letter-spacing: 2px;
+    font-family: 'Skranji', cursive;
 }
 </style>

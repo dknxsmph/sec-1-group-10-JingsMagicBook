@@ -30,7 +30,7 @@
         },
         {
             "uId": 5,
-            "uName": "Poy",
+            "uName": "Poi",
             "uBalance": 8000.0,
             "uImg": "../src/assets/users-img/boy.png",
             "uCart": []
