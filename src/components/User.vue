@@ -11,7 +11,10 @@ defineProps({
     <div>
         <h1>Who's Renting</h1>
         <ul>
-            <li v-for="(user, index) in users" :key="index">{{ user.uName }}</li>
+            <li v-for="(user, index) in users" :key="index">
+                {{ user.uName }}
+                <img :src="user.uImg" />
+            </li>
         </ul>
     </div>
 </template>

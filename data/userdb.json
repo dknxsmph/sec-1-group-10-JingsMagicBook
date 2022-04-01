@@ -4,42 +4,42 @@
             "uId": 1,
             "uName": "Kim",
             "uBalance": 5000.0,
-            "uImg": "../src/assets/kim.png",
+            "uImg": "../src/assets/users-img/kim.png",
             "uCart": []
         },
         {
             "uId": 2,
             "uName": "Mint",
             "uBalance": 9999.0,
-            "uImg": "../src/assets/mint.png",
+            "uImg": "../src/assets/users-img/mint.png",
             "uCart": []
         },
         {
             "uId": 3,
             "uName": "Ny",
             "uBalance": 120.0,
-            "uImg": "../src/assets/ny.png",
+            "uImg": "../src/assets/users-img/ny.png",
             "uCart": []
         },
         {
             "uId": 4,
             "uName": "Billy",
             "uBalance": 7000.0,
-            "uImg": "../src/assets/billy.png",
+            "uImg": "../src/assets/users-img/billy.png",
             "uCart": []
         },
         {
             "uId": 5,
             "uName": "Boy",
             "uBalance": 8000.0,
-            "uImg": "../src/assets/boy.png",
+            "uImg": "../src/assets/users-img/boy.png",
             "uCart": []
         },
         {
             "uId": 203,
             "uName": "AJ-Jing",
             "uBalance": 999999.0,
-            "uImg": "../src/assets/aj-jing.png",
+            "uImg": "../src/assets/users-img/aj-jing.png",
             "uCart": []
         }
     ]
