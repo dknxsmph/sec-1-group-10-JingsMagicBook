@@ -1,4 +1,5 @@
 <script setup>
+const emit = defineEmits(['loginUser'])
 defineProps({
   user: {
     type: Object,
@@ -8,7 +9,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="user-box">
+  <div class="user-box" @click="emit('loginUser', user)">
     <img
       class="profile-img"
       :src="user.uImg"

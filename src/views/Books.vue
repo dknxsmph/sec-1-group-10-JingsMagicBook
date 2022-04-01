@@ -14,8 +14,8 @@ const getUsers = async () => {
 }
 
 onBeforeMount(async () => {
-  const bk = await getUsers()
-  books.value = bk.books
+  const fetchedBooks = await getUsers()
+  books.value = fetchedBooks
 })
 </script>
 

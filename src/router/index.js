@@ -1,26 +1,63 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useUser } from '../stores/user.js'
 
+import Login from '../views/Login.vue'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Books from '../views/Books.vue'
+
+import NavbarComp from '../components/Navbar.vue'
 
 const history = createWebHistory()
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
+    components: {
+      NavbarComp,
+      default: Home,
+    },
+    meta: { requiresAuth: true },
   },
   {
     path: '/about',
     name: 'About',
-    component: About,
+    components: {
+      NavbarComp,
+      default: About,
+    },
+    meta: { requiresAuth: true },
   },
   {
     path: '/books_list',
     name: 'Books',
-    component: Books,
+    components: {
+      NavbarComp,
+      default: Books,
+    },
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login,
+    meta: { hideForAuth: true },
   },
 ]
 const router = createRouter({ routes, history })
+
+router.beforeEach((to, from, next) => {
+  const userStore = useUser()
+
+  const requiresAuth = to.matched.some((record) => record.meta.requiresAuth)
+  const hideForAuth = to.matched.some((record) => record.meta.hideForAuth)
+
+  if (requiresAuth && !userStore.isLoggedIn) {
+    return next({ path: '/login' })
+  } else if (hideForAuth && userStore.isLoggedIn) {
+    return next({ path: '/' })
+  }
+  next()
+})
+
 export default router

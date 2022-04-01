@@ -2,6 +2,9 @@
 import { onBeforeMount, ref } from 'vue'
 import User from '../components/User.vue'
 
+import { useUser } from '../stores/user.js'
+const userStore = useUser()
+
 const users = ref([])
 
 const getUsers = async () => {
@@ -14,8 +17,8 @@ const getUsers = async () => {
 }
 
 onBeforeMount(async () => {
-  const usr = await getUsers()
-  users.value = usr.users
+  const fetchedUsers = await getUsers()
+  users.value = fetchedUsers
 })
 </script>
 
@@ -29,7 +32,12 @@ onBeforeMount(async () => {
       </div>
 
       <div class="box-user">
-        <User v-for="user in users" :key="user.uId" :user="user" />
+        <User
+          v-for="userData in users"
+          :key="userData.uId"
+          :user="userData"
+          @loginUser="userStore.login(userData)"
+        />
       </div>
     </div>
   </div>
