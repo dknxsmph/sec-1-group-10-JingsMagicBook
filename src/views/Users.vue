@@ -15,7 +15,7 @@ const getUsers = async () => {
 
 onBeforeMount(async () => {
   const usr = await getUsers()
-  users.value = usr.user
+  users.value = usr.users
 })
 </script>
 
