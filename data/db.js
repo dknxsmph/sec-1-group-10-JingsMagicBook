@@ -1,7 +1,4 @@
-const users = require('./userdb.json');
-const books = require('./bookdb.json');
+const users = require('./users.json')
+const books = require('./books.json')
 
-module.exports = () => ({
-    users: users,
-    books: books
-});
+module.exports = () => ({ users, books })
