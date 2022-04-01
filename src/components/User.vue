@@ -27,6 +27,11 @@ defineProps({
 .user-box:hover {
   cursor: pointer;
   transform: scale(1.1);
+  filter: drop-shadow(0 0 0.7rem rgba(255, 255, 255, 0.5));
+}
+
+.user-box:active {
+  transform: scale(1);
 }
 
 img.profile-img {
