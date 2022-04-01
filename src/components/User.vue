@@ -6,7 +6,7 @@ defineProps({
     }
 })
 </script>
- 
+
 <template>
     <div>
         <h1>Who's Renting</h1>
