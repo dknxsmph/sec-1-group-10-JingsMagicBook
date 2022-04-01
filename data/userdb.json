@@ -2,8 +2,44 @@
     "user": [
         {
             "uId": 1,
-            "uName": "Sage",
+            "uName": "Kim",
             "uBalance": 5000.0,
+            "uImg": "../src/assets/kim.png",
+            "uCart": []
+        },
+        {
+            "uId": 2,
+            "uName": "Mint",
+            "uBalance": 9999.0,
+            "uImg": "../src/assets/mint.png",
+            "uCart": []
+        },
+        {
+            "uId": 3,
+            "uName": "Ny",
+            "uBalance": 120.0,
+            "uImg": "../src/assets/ny.png",
+            "uCart": []
+        },
+        {
+            "uId": 4,
+            "uName": "Billy",
+            "uBalance": 7000.0,
+            "uImg": "../src/assets/billy.png",
+            "uCart": []
+        },
+        {
+            "uId": 5,
+            "uName": "Boy",
+            "uBalance": 8000.0,
+            "uImg": "../src/assets/boy.png",
+            "uCart": []
+        },
+        {
+            "uId": 203,
+            "uName": "AJ-Jing",
+            "uBalance": 999999.0,
+            "uImg": "../src/assets/aj-jing.png",
             "uCart": []
         }
     ]
