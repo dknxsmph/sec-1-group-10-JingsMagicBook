@@ -9,18 +9,18 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
   },
   {
     path: '/about',
     name: 'About',
-    component: About
+    component: About,
   },
   {
     path: '/books_list',
     name: 'Books',
-    component: Books
-  }
+    component: Books,
+  },
 ]
 const router = createRouter({ routes, history })
 export default router

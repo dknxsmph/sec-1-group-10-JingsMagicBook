@@ -12,7 +12,7 @@ export class CookieUtil {
       }
       cookieValue = decodeURIComponent(
         document.cookie.substring(cookieStart + cookieName.length, cookieEnd)
-      );
+      )
     }
 
     return cookieValue
