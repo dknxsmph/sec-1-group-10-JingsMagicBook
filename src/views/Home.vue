@@ -36,9 +36,9 @@ onBeforeMount(async () => {
       <a href="" @click="userStore.logout()">Logout</a>
     </p>
   </div> -->
-    <div class="container">
+    <div class="container book-list-box">
       <h1>BOOKS FOR RENT</h1>
-      <ul class="boox-list-box">
+      <ul>
         <li class="book-list">
           <BookCard v-for="(book, index) in books" :key="index" :book="book" />
         </li>
@@ -52,10 +52,18 @@ onBeforeMount(async () => {
   background: url(../assets/background-img/bg.png);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
+
 #home h1 {
+  padding: 50px 0;
   text-align: center;
   font-family: 'Skranji', cursive;
+  font-size: 20pt;
+}
+
+.book-list-box {
+  padding: 1em 0 50px 0;
 }
 
 .book-list {
@@ -64,6 +72,5 @@ onBeforeMount(async () => {
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 1em;
   grid-row-gap: 1em;
-  padding: 30px;
 }
 </style>

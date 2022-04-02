@@ -1,7 +1,7 @@
 <script setup>
 import { onBeforeMount } from 'vue'
-import LoginVue from './views/Login.vue'
 import { useUser } from './stores/user.js'
+
 const userStore = useUser()
 
 onBeforeMount(() => {
