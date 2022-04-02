@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-  books: {
+  book: {
     type: Object,
     require: true,
   },
@@ -8,57 +8,44 @@ defineProps({
 </script>
 
 <template>
-  <div>
-    <h1 id="H1">BOOKS FOR RENT</h1>
-    <ul>
-      <li class="BookBox" v-for="(book, index) in books" :key="index">
-        <div class="BookCard">
-            <img class="book_img" :src="book.bImg" />
-            <br>
-                <p class="book_name">{{ book.bName }}</p>
-            <div class="addToCardBox">
-                <p class="addToCartBtn">ADD TO CART</p>
-            </div>
-        </div>
-      </li>
-    </ul>
+  <div class="book-card-body">
+    <img class="book-card-img" :src="book.bImg" />
+    <p class="book-card-name">{{ book.bName }}</p>
+    <div class="book-btn-group">
+      <button class="btn-add-to-cart">ADD TO CART</button>
+    </div>
   </div>
 </template>
 
 <style>
-#H1{
-    text-align: center;
-    font-family: 'Skranji', cursive;
+.book-card-body {
+  width: 25%;
 }
-.BookBox{
-    display: flex;
-    justify-content: space-around;
+.book-card-img {
+  width: 100%;
+  padding: 8px;
 }
-.BookCard{
-    width:25%
+.book-card-name {
+  font-family: 'Skranji', cursive;
+  text-align: center;
 }
-.book_img{
-    width: 100%;
-    padding: 8px;
+
+.book-btn-group {
+  text-align: center;
 }
-.book_name{
-    font-family: 'Skranji', cursive;
-    text-align: center;
+
+.btn-add-to-cart {
+  outline: none;
+  border: none;
+  font-family: 'Itim', cursive;
+  color: rgb(255, 255, 255);
+  background: rgb(29, 11, 1);
+  width: 50%;
+  border-radius: 10px;
+  padding: 5px;
+  transition: all 0.3s ease-out;
 }
-.addToCartBtn{
-    text-align: center;
-    font-family: 'Itim', cursive;
-    color: rgb(255, 255, 255);
-}
-.addToCardBox{
-    background: rgb(29, 11, 1);
-    margin: auto;
-    width: 50%;
-    border-radius: 10px;
-    padding: 5px;
-    transition: all 0.3s ease-out;
-}
-.addToCardBox:hover {
+.btn-add-to-cart:hover {
   cursor: pointer;
   transform: scale(1.1);
   filter: drop-shadow(0 0 0.7rem rgba(255, 255, 255, 0.5));
