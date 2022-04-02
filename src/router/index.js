@@ -5,59 +5,64 @@ import Login from '../views/Login.vue'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Books from '../views/Books.vue'
-
+import NotFound from '../views/NotFound.vue';
 import NavbarComp from '../components/Navbar.vue'
 
 const history = createWebHistory()
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    components: {
-      NavbarComp,
-      default: Home,
+const routes = [{
+        path: '/',
+        name: 'Home',
+        components: {
+            NavbarComp,
+            default: Home,
+        },
+        meta: { requiresAuth: true },
     },
-    meta: { requiresAuth: true },
-  },
-  {
-    path: '/about',
-    name: 'About',
-    components: {
-      NavbarComp,
-      default: About,
+    {
+        path: '/about',
+        name: 'About',
+        components: {
+            NavbarComp,
+            default: About,
+        },
+        meta: { requiresAuth: true },
     },
-    meta: { requiresAuth: true },
-  },
-  {
-    path: '/books_list',
-    name: 'Books',
-    components: {
-      NavbarComp,
-      default: Books,
+    {
+        path: '/books_list',
+        name: 'Books',
+        components: {
+            NavbarComp,
+            default: Books,
+        },
+        meta: { requiresAuth: true },
     },
-    meta: { requiresAuth: true },
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: Login,
-    meta: { hideForAuth: true },
-  },
+    {
+        path: '/login',
+        name: 'Login',
+        component: Login,
+        meta: { hideForAuth: true },
+    },
+    {
+        path: "/:catchNotMatchPath(.*)",
+        name: "NotFound",
+        component: NotFound,
+    },
+
 ]
 const router = createRouter({ routes, history })
 
 router.beforeEach((to, from, next) => {
-  const userStore = useUser()
+    const userStore = useUser()
 
-  const requiresAuth = to.matched.some((record) => record.meta.requiresAuth)
-  const hideForAuth = to.matched.some((record) => record.meta.hideForAuth)
+    const requiresAuth = to.matched.some((record) => record.meta.requiresAuth)
+    const hideForAuth = to.matched.some((record) => record.meta.hideForAuth)
 
-  if (requiresAuth && !userStore.isLoggedIn) {
-    return next({ path: '/login' })
-  } else if (hideForAuth && userStore.isLoggedIn) {
-    return next({ path: '/' })
-  }
-  next()
+    if (requiresAuth && !userStore.isLoggedIn) {
+        return next({ path: '/login' })
+    } else if (hideForAuth && userStore.isLoggedIn) {
+        return next({ path: '/' })
+    }
+    next()
 })
 
 export default router
