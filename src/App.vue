@@ -25,6 +25,11 @@ onBeforeMount(() => {
   box-sizing: border-box;
 }
 
+button {
+  outline: none;
+  border: none;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

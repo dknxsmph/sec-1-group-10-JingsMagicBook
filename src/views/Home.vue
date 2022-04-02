@@ -50,6 +50,8 @@ onBeforeMount(async () => {
 <style scoped>
 #home {
   background: url(../assets/background-img/bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #home h1 {
   text-align: center;
@@ -58,10 +60,10 @@ onBeforeMount(async () => {
 
 .book-list {
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-  
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
+  padding: 30px;
 }
 </style>
