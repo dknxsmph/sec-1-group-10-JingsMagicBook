@@ -4,7 +4,6 @@ import { useUser } from '../stores/user.js'
 import Login from '../views/Login.vue'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
-import Books from '../views/Books.vue'
 import NotFound from '../views/NotFound.vue';
 import NavbarComp from '../components/Navbar.vue'
 
@@ -24,15 +23,6 @@ const routes = [{
         components: {
             NavbarComp,
             default: About,
-        },
-        meta: { requiresAuth: true },
-    },
-    {
-        path: '/books_list',
-        name: 'Books',
-        components: {
-            NavbarComp,
-            default: Books,
         },
         meta: { requiresAuth: true },
     },
