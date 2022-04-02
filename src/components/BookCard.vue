@@ -20,6 +20,9 @@ defineProps({
 <style>
 .book-card-body {
   width: 25%;
+  border-radius: 5%;
+  background-color: rgba(255,255,255,0.69);
+  margin: 1px;
 }
 .book-card-img {
   width: 100%;
@@ -44,6 +47,7 @@ defineProps({
   border-radius: 10px;
   padding: 5px;
   transition: all 0.3s ease-out;
+  margin-bottom: 5%;
 }
 .btn-add-to-cart:hover {
   cursor: pointer;

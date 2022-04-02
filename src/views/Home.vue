@@ -49,9 +49,8 @@ onBeforeMount(async () => {
 
 <style scoped>
 #home {
-  background: rgba(0, 151, 19, 0.1);
+  background: url(../assets/background-img/bg.png);
 }
-
 #home h1 {
   text-align: center;
   font-family: 'Skranji', cursive;
@@ -63,5 +62,6 @@ onBeforeMount(async () => {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+  
 }
 </style>
