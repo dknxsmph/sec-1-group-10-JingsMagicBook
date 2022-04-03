@@ -1,24 +1,16 @@
 <script setup>
 import { useUser } from '../stores/user.js'
-import { onBeforeMount, ref } from 'vue'
+import { useBooks } from '../stores/books.js'
+import { onBeforeMount, ref  } from 'vue'
 
 import BookCard from '../components/BookCard.vue'
 
 const userStore = useUser()
-const books = ref([])
+const booksStore = useBooks()
 
-const getBooks = async () => {
-  try {
-    const res = await fetch('http://localhost:5000/books', { method: 'GET' })
-    return await res.json()
-  } catch (err) {
-    console.log(err)
-  }
-}
-
-onBeforeMount(async () => {
-  const fetchedBooks = await getBooks()
-  books.value = fetchedBooks
+onBeforeMount(() => {
+  // Fetching books if the api has any update
+  booksStore.fetchBooks()
 })
 </script>
 
@@ -36,11 +28,11 @@ onBeforeMount(async () => {
       <a href="" @click="userStore.logout()">Logout</a>
     </p>
   </div> -->
-    <div class="container book-list-box">
+    <div class="container book-list-box" v-if="booksStore.books">
       <h1>BOOKS FOR RENT</h1>
       <ul>
         <li class="book-list">
-          <BookCard v-for="(book, index) in books" :key="index" :book="book" />
+          <BookCard v-for="(book, index) in booksStore.books" :key="index" :book="book" />
         </li>
       </ul>
     </div>

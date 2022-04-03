@@ -72,5 +72,14 @@
             "bPrice": 99,
             "bImg": "../src/assets/books-img/1.png"
         }
+        ,
+        {
+            "bId": 10,
+            "bName": "Fuck",
+            "bDesc": "BASKERVILLE'S EDITION BOUND BY THE GREEK-KEY BINDER And Administration of the Sacraments, And Other Rites and Ceremonies of the Church, According to the Use of The Church of England: Together with the Psalter or Psalms of David, Pointed as they are to be sung or said in Churches.",
+            "bStatus": "available",
+            "bPrice": 99,
+            "bImg": "../src/assets/books-img/1.png"
+        }
     ]
 }
