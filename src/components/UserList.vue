@@ -1,15 +1,20 @@
 <script setup>
 const emit = defineEmits(['loginUser'])
 defineProps({
-  user: {
-    type: Object,
+  users: {
+    type: Array,
     require: true,
   },
 })
 </script>
 
 <template>
-  <div class="user-box" @click="emit('loginUser', user)">
+  <div
+    v-for="user in users"
+    :key="user.uId"
+    class="user-box"
+    @click="emit('loginUser', user)"
+  >
     <img
       class="profile-img"
       :src="user.uImg"
