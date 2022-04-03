@@ -1,8 +1,7 @@
 <script setup>
-import { computed } from 'vue'
 defineProps({
-  book: {
-    type: Object,
+  books: {
+    type: Array,
     require: true,
   },
 })
@@ -18,7 +17,7 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
 </script>
 
 <template>
-  <div class="book-card-body">
+  <div class="book-card" v-for="book in books" :key="book.bId">
     <img class="book-card-img" :src="book.bImg" />
     <p class="book-card-name">{{ shouldBookNameTruncate(book.bName, 27) }}</p>
     <div class="book-btn-group">
@@ -28,7 +27,7 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
 </template>
 
 <style>
-.book-card-body {
+.book-card {
   width: 80%;
   border-radius: 1em;
   padding: 8px;

@@ -3,7 +3,7 @@ import { useUser } from '../stores/user.js'
 import { useBooks } from '../stores/books.js'
 import { onBeforeMount, ref  } from 'vue'
 
-import BookCard from '../components/BookCard.vue'
+import BookList from '../components/BookList.vue'
 
 const userStore = useUser()
 const booksStore = useBooks()
@@ -30,11 +30,9 @@ onBeforeMount(() => {
   </div> -->
     <div class="container book-list-box" v-if="booksStore.books">
       <h1>BOOKS FOR RENT</h1>
-      <ul>
-        <li class="book-list">
-          <BookCard v-for="(book, index) in booksStore.books" :key="index" :book="book" />
-        </li>
-      </ul>
+      <div class="book-list">
+        <BookList :books="booksStore.books"/>
+      </div>
     </div>
   </div>
 </template>
