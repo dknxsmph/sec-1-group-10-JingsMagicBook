@@ -6,7 +6,7 @@ import { CookieUtil } from '../utils/CookieUtil.js'
 export const useUser = defineStore('user', () => {
   const router = useRouter()
   const user = ref(null)
-  const userImg = ref('')
+
   const login = (userData) => {
     if (!userData) {
       return
@@ -32,7 +32,6 @@ export const useUser = defineStore('user', () => {
         })
         const data = await res.json()
         user.value = data[0]
-        userImg.value = data[0].uImg
       } catch (err) {
         console.log(err)
       }
@@ -42,7 +41,7 @@ export const useUser = defineStore('user', () => {
     () => user.value != null || CookieUtil.get('userId') != null
   )
   console.log();
-  return { user, userImg, login, logout, loadUser, isLoggedIn }
+  return { user, login, logout, loadUser, isLoggedIn }
 })
 
 if (import.meta.hot) {
