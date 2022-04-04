@@ -12,7 +12,7 @@ onMounted(() => {
 </script>
  
 <template>
-<div id="navbar" :class="isScrolled && 'scrolled'">
+<nav id="navbar" :class="isScrolled && 'scrolled'">
   <div class="navbar-banner">
     <img class="navbar-logo" src="../assets/icon.png" alt="Jing's Magic Book Logo"/>
     <div class="navbar-title">Jing's Magic Book</div>
@@ -21,14 +21,10 @@ onMounted(() => {
     <li><router-link :to="{ name: 'Home' }">Home</router-link></li>
     <li><router-link :to="{ name: 'About' }">About</router-link></li>
   </ul>
-</div>
+</nav>
 </template>
  
 <style scoped>
-:root {
-  --nav-default-padding: 12px 32px;
-  --nav-scrolled-padding: 8px 32px;
-}
 #navbar {
   position: sticky;
   top: 0;
@@ -40,6 +36,10 @@ onMounted(() => {
   align-items: center;
   padding: 12px 32px;
   transition: padding .3s ease-out;
+}
+
+.active-link {
+  color: white !important;
 }
 
 .navbar-banner {
