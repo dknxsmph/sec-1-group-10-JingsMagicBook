@@ -9,35 +9,34 @@ import NavbarComp from '../components/Navbar.vue'
 
 const history = createWebHistory()
 const routes = [{
-        path: '/',
-        name: 'Home',
-        components: {
-            NavbarComp,
-            default: Home,
-        },
-        meta: { requiresAuth: true },
+    path: '/',
+    name: 'Home',
+    components: {
+        NavbarComp,
+        default: Home,
     },
-    {
-        path: '/about',
-        name: 'About',
-        components: {
-            NavbarComp,
-            default: About,
-        },
-        meta: { requiresAuth: true },
+    meta: { requiresAuth: true },
+},
+{
+    path: '/about',
+    name: 'About',
+    components: {
+        NavbarComp,
+        default: About,
     },
-    {
-        path: '/login',
-        name: 'Login',
-        component: Login,
-        meta: { hideForAuth: true },
-    },
-    {
-        path: "/:catchNotMatchPath(.*)",
-        name: "NotFound",
-        component: NotFound,
-    },
-
+    meta: { requiresAuth: true },
+},
+{
+    path: '/login',
+    name: 'Login',
+    component: Login,
+    meta: { hideForAuth: true },
+},
+{
+    path: "/:catchNotMatchPath(.*)",
+    name: "NotFound",
+    component: NotFound,
+}
 ]
 const router = createRouter({ routes, history, linkActiveClass: 'active-link' })
 

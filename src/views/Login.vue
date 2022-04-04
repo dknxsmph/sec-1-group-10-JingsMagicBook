@@ -32,7 +32,7 @@ onBeforeMount(async () => {
       </div>
 
       <div class="users-box">
-        <UserList :users="users" @loginUser="userStore.login"/>
+        <UserList :users="users" @loginUser="userStore.login" />
       </div>
     </div>
   </div>
@@ -66,7 +66,7 @@ onBeforeMount(async () => {
   position: relative;
   height: 100%;
   padding: 60px 0;
-  font-family: 'Skranji', cursive;
+  font-family: "Skranji", cursive;
 }
 
 .icon-login {

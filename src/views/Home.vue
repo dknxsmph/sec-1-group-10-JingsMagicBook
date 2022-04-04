@@ -1,7 +1,7 @@
 <script setup>
 import { useUser } from '../stores/user.js'
 import { useBooks } from '../stores/books.js'
-import { onBeforeMount, ref  } from 'vue'
+import { onBeforeMount, ref } from 'vue'
 
 import BookList from '../components/BookList.vue'
 
@@ -27,11 +27,11 @@ onBeforeMount(() => {
       >&nbsp;
       <a href="" @click="userStore.logout()">Logout</a>
     </p>
-  </div> -->
+    </div>-->
     <div class="container book-list-box" v-if="booksStore.books">
       <h1>BOOKS FOR RENT</h1>
       <div class="book-list">
-        <BookList :books="booksStore.books"/>
+        <BookList :books="booksStore.books" />
       </div>
     </div>
   </div>
@@ -48,7 +48,7 @@ onBeforeMount(() => {
 #home h1 {
   padding: 50px 0;
   text-align: center;
-  font-family: 'Skranji', cursive;
+  font-family: "Skranji", cursive;
   font-size: 20pt;
 }
 
