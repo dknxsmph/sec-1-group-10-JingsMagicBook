@@ -16,18 +16,6 @@ onBeforeMount(() => {
 
 <template>
   <div id="home">
-    <!-- <div v-if="userStore.user">
-    <h2>Home</h2>
-    <p>
-      Hello,
-      <b
-        >{{ userStore.user.uName }} (Balance: ${{
-          userStore.user.uBalance.toLocaleString('en-US')
-        }})</b
-      >&nbsp;
-      <a href="" @click="userStore.logout()">Logout</a>
-    </p>
-    </div>-->
     <div class="container book-list-box" v-if="booksStore.books">
       <h1>BOOKS FOR RENT</h1>
       <div class="book-list">
@@ -48,7 +36,7 @@ onBeforeMount(() => {
 #home h1 {
   padding: 50px 0;
   text-align: center;
-  font-family: "Skranji", cursive;
+  font-family: 'Skranji', cursive;
   color: white;
   font-size: 20pt;
 }
