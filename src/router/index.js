@@ -4,52 +4,41 @@ import { useUser } from '../stores/user.js'
 import Login from '../views/Login.vue'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
-import Books from '../views/Books.vue'
 import NotFound from '../views/NotFound.vue';
 import NavbarComp from '../components/Navbar.vue'
 
 const history = createWebHistory()
 const routes = [{
-        path: '/',
-        name: 'Home',
-        components: {
-            NavbarComp,
-            default: Home,
-        },
-        meta: { requiresAuth: true },
+    path: '/',
+    name: 'Home',
+    components: {
+        NavbarComp,
+        default: Home,
     },
-    {
-        path: '/about',
-        name: 'About',
-        components: {
-            NavbarComp,
-            default: About,
-        },
-        meta: { requiresAuth: true },
+    meta: { requiresAuth: true },
+},
+{
+    path: '/about',
+    name: 'About',
+    components: {
+        NavbarComp,
+        default: About,
     },
-    {
-        path: '/books_list',
-        name: 'Books',
-        components: {
-            NavbarComp,
-            default: Books,
-        },
-        meta: { requiresAuth: true },
-    },
-    {
-        path: '/login',
-        name: 'Login',
-        component: Login,
-        meta: { hideForAuth: true },
-    },
-    {
-        path: "/:catchNotMatchPath(.*)",
-        name: "NotFound",
-        component: NotFound,
-    },
-
+    meta: { requiresAuth: true },
+},
+{
+    path: '/login',
+    name: 'Login',
+    component: Login,
+    meta: { hideForAuth: true },
+},
+{
+    path: "/:catchNotMatchPath(.*)",
+    name: "NotFound",
+    component: NotFound,
+}
 ]
-const router = createRouter({ routes, history })
+const router = createRouter({ routes, history, linkActiveClass: 'active-link' })
 
 router.beforeEach((to, from, next) => {
     const userStore = useUser()

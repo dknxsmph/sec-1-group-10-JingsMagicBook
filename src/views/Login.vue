@@ -1,6 +1,6 @@
 <script setup>
 import { onBeforeMount, ref } from 'vue'
-import User from '../components/User.vue'
+import UserList from '../components/UserList.vue'
 
 import { useUser } from '../stores/user.js'
 const userStore = useUser()
@@ -31,13 +31,8 @@ onBeforeMount(async () => {
         <h3 class="discription">Who's renting</h3>
       </div>
 
-      <div class="box-user">
-        <User
-          v-for="userData in users"
-          :key="userData.uId"
-          :user="userData"
-          @loginUser="userStore.login(userData)"
-        />
+      <div class="users-box">
+        <UserList :users="users" @loginUser="userStore.login" />
       </div>
     </div>
   </div>
@@ -56,7 +51,7 @@ onBeforeMount(async () => {
   align-items: center;
 }
 
-.box-user {
+.users-box {
   display: grid;
   text-align: center;
   grid-template-columns: repeat(3, auto);
@@ -71,7 +66,7 @@ onBeforeMount(async () => {
   position: relative;
   height: 100%;
   padding: 60px 0;
-  font-family: 'Skranji', cursive;
+  font-family: "Skranji", cursive;
 }
 
 .icon-login {

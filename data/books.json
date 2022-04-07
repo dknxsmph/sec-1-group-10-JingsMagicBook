@@ -6,7 +6,7 @@
             "bDesc": "The Whole Booke of Psalmes Collected into English Meeter, by T. Sternhold, I. Hopkins, and others.",
             "bStatus": "available",
             "bPrice": 109,
-            "bImg": "../src/assets/books-img/1.jpg"
+            "bImg": "../src/assets/books-img/1.png"
         },
         {
             "bId": 2,
@@ -14,7 +14,7 @@
             "bDesc": "1. The Cure of Cares.2. Contentment in Gods Gift.3. The Tribunall of the Conscience. Or, A treatise of Examination.",
             "bStatus": "available",
             "bPrice": 99,
-            "bImg": "../src/assets/books-img/1.jpg"
+            "bImg": "../src/assets/books-img/1.png"
         },
         {
             "bId": 3,
@@ -22,7 +22,7 @@
             "bDesc": "The Book of Common Prayer, And Administration of the Sacraments, And Other Rites and Ceremonies of the Church, According to the Use of The Church of England: Together with the Psalter or Psalms of David, Pointed as they are to be sung or said in Churches.",
             "bStatus": "available",
             "bPrice": 79,
-            "bImg": "../src/assets/books-img/1.jpg"
+            "bImg": "../src/assets/books-img/1.png"
         },
         {
             "bId": 4,
@@ -30,7 +30,7 @@
             "bDesc": "Fables with a Life of the Author, and embellished with a Plate to each Fable.",
             "bStatus": "available",
             "bPrice": 69,
-            "bImg": "../src/assets/books-img/1.jpg"
+            "bImg": "../src/assets/books-img/1.png"
         },
         {
             "bId": 5,
@@ -38,7 +38,7 @@
             "bDesc": "Engraved frontispiece in both volumes and 45 folding plates by Taraval after Vaxcillere.",
             "bStatus": "available",
             "bPrice": 99,
-            "bImg": "../src/assets/books-img/1.jpg"
+            "bImg": "../src/assets/books-img/1.png"
         },
         {
             "bId": 6,
@@ -46,7 +46,7 @@
             "bDesc": "Pub. Terentii Comoediae Sex Ex recensione Heinsiana.Engraved title, small woodcut portrait, printed in black and red.",
             "bStatus": "available",
             "bPrice": 65,
-            "bImg": "../src/assets/books-img/1.jpg"
+            "bImg": "../src/assets/books-img/1.png"
         },
         {
             "bId": 7,
@@ -54,7 +54,7 @@
             "bDesc": "The Experienc'd Angler, or Angling Improved.Engraved additional title by Vaughan, with contemporary or early hand-colouring. 10 engravings of fishes in the text.",
             "bStatus": "available",
             "bPrice": 79,
-            "bImg": "../src/assets/books-img/1.jpg"
+            "bImg": "../src/assets/books-img/1.png"
         },
         {
             "bId": 8,
@@ -62,7 +62,7 @@
             "bDesc": "The Works of the late Ingenious Mr. George Farquhar: Containing all his Letters, Poems, Essays, and Comedies Publish'd in his Life-time. The Comedies are Illustrated with Cuts representing the principal Scenes in each Play. The Second Edition.",
             "bStatus": "available",
             "bPrice": 89,
-            "bImg": "../src/assets/books-img/1.jpg"
+            "bImg": "../src/assets/books-img/1.png"
         },
         {
             "bId": 9,
@@ -70,7 +70,7 @@
             "bDesc": "BASKERVILLE'S EDITION BOUND BY THE GREEK-KEY BINDER And Administration of the Sacraments, And Other Rites and Ceremonies of the Church, According to the Use of The Church of England: Together with the Psalter or Psalms of David, Pointed as they are to be sung or said in Churches.",
             "bStatus": "available",
             "bPrice": 99,
-            "bImg": "../src/assets/books-img/1.jpg"
+            "bImg": "../src/assets/books-img/1.png"
         }
     ]
 }

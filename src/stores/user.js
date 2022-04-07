@@ -13,24 +13,23 @@ export const useUser = defineStore('user', () => {
     }
 
     user.value = userData
-    CookieUtil.set('username', userData.uName)
+    CookieUtil.set('userId', userData.uId)
     router.push('/')
   }
 
   const logout = () => {
     user.value = null
-    CookieUtil.unset('username')
+    CookieUtil.unset('userId')
     router.push('/login')
   }
 
   const loadUser = async () => {
-    if (CookieUtil.get('username')) {
+    if (CookieUtil.get('userId')) {
       try {
-        const username = CookieUtil.get('username')
-        const res = await fetch(
-          `http://localhost:5000/users?uName=${username}`,
-          { method: 'GET' }
-        )
+        const userId = CookieUtil.get('userId')
+        const res = await fetch(`http://localhost:5000/users?uId=${userId}`, {
+          method: 'GET',
+        })
         const data = await res.json()
         user.value = data[0]
       } catch (err) {
@@ -38,11 +37,10 @@ export const useUser = defineStore('user', () => {
       }
     }
   }
-
   const isLoggedIn = computed(
-    () => user.value != null || CookieUtil.get('username') != null
+    () => user.value != null || CookieUtil.get('userId') != null
   )
-
+  console.log();
   return { user, login, logout, loadUser, isLoggedIn }
 })
 
