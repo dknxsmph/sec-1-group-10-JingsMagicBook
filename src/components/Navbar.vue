@@ -1,8 +1,10 @@
 <script setup>
 import { ref, onMounted, onBeforeMount } from 'vue'
 import { useUser } from '../stores/user.js'
+
+const userStore = useUser()
+
 const isScrolled = ref(false)
-let userImg = ref('')
 const handleScroll = (evt) => {
   isScrolled.value = (window.scrollY > 200)
 }
@@ -10,18 +12,10 @@ const handleScroll = (evt) => {
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 })
-
-// loadUser() onBeforeMount
-onBeforeMount(async () => {
-  await useUser().loadUser();
-  userImg.value = useUser().user.uImg;
-})
-//
-
 </script>
  
 <template>
-  <nav id="navbar" :class="isScrolled && 'scrolled'">
+  <nav id="navbar" :class="isScrolled && 'scrolled'" v-if="userStore && userStore.user">
     <div class="navbar-banner">
       <img class="navbar-logo" src="../assets/icon.png" alt="Jing's Magic Book Logo" />
       <div class="navbar-title">Jing's Magic Book</div>
@@ -40,7 +34,7 @@ onBeforeMount(async () => {
       </li>
       <li class="iconify" data-icon="iconoir:cart-alt" data-inline="false"></li>
       <!-- NAV BAR USER IMAGE -->
-      <img @click="useUser().logout()" :src="userImg" alt="user image" style="width: 50px" />
+      <img @click="userStore.logout" :src="userStore.user.uImg" alt="user image" style="width: 50px" />
       <!-- NAV BAR USER IMAGE -->
     </ul>
   </nav>
