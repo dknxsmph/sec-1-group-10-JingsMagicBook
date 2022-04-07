@@ -45,8 +45,8 @@ onBeforeMount(async () => {
   position: sticky;
   top: 0;
   width: 100%;
-  background: #cc9545;
-
+  background: #a3a1b9;
+  font-family: "Skranji";
   display: flex;
   justify-content: space-between;
   align-items: center;

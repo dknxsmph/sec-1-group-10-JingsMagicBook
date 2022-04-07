@@ -39,7 +39,7 @@ onBeforeMount(() => {
 
 <style scoped>
 #home {
-  background: url(../assets/background-img/bg.png);
+  background: url(../assets/background-img/bg-home.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -49,6 +49,7 @@ onBeforeMount(() => {
   padding: 50px 0;
   text-align: center;
   font-family: "Skranji", cursive;
+  color: white;
   font-size: 20pt;
 }
 
