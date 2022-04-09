@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onBeforeMount } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useUser } from '../stores/user.js'
 
 const userStore = useUser()
@@ -21,11 +21,13 @@ onMounted(() => {
     v-if="userStore && userStore.user"
   >
     <div class="navbar-banner">
-      <img
-        class="navbar-logo"
-        src="../assets/icon.png"
-        alt="Jing's Magic Book Logo"
-      />
+      <router-link :to="{ path: '/' }">
+        <img
+          class="navbar-logo"
+          src="../assets/icon.png"
+          alt="Jing's Magic Book Logo"
+        />
+      </router-link>
       <div class="navbar-title">Jing's Magic Book</div>
     </div>
     <ul class="navs">
@@ -36,19 +38,18 @@ onMounted(() => {
         <router-link :to="{ name: 'About' }">About</router-link>
       </li>
       <li>
-        <p class="s">
-          <input name="search" id="search" type="search" />
-        </p>
+        <label for="search" class="seach-bar">
+          <input name="search" id="search" type="search" autocomplete="off" />
+        </label>
       </li>
-      <li class="iconify" data-icon="iconoir:cart-alt" data-inline="false"></li>
-      <!-- NAV BAR USER IMAGE -->
-      <img
-        @click="userStore.logout"
-        :src="userStore.user.uImg"
-        alt="user image"
-        style="width: 50px"
-      />
-      <!-- NAV BAR USER IMAGE -->
+      <li>
+        <img
+          class="profile-img"
+          @click="userStore.logout"
+          :src="userStore.user.uImg"
+          alt="user image"
+        />
+      </li>
     </ul>
   </nav>
 </template>
@@ -89,6 +90,7 @@ onMounted(() => {
 ul.navs {
   list-style: none;
   display: flex;
+  align-items: center;
 }
 
 .navs li {
@@ -111,7 +113,21 @@ ul.navs {
   padding: 8px 32px !important;
   opacity: 0.9;
 }
+
+img.profile-img {
+  vertical-align: middle;
+  width: 50px;
+  transition: 0.3s ease-out;
+}
+
+img.profile-img:hover {
+  cursor: pointer;
+  filter: drop-shadow(0 0 0.7rem rgba(255, 255, 255, 0.5));
+}
+
 #search {
+  cursor: pointer;
+  appearance: none;
   -webkit-appearance: none;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   width: 24px;
@@ -126,17 +142,18 @@ ul.navs {
     inset 0 2px 5px rgba(82, 0, 150, 0.3), 0 2px 0 rgba(255, 255, 255, 0.6);
   position: relative;
   z-index: 5;
+  transition: 0.3s ease;
   -webkit-transition: 0.3s ease;
   -moz-transition: 0.3s ease;
 }
 
 #search:focus {
+  cursor: auto;
   outline: none;
   width: 180px;
 }
 
-p.s {
-  z-index: 4;
+.seach-bar {
   position: relative;
   padding: 5px;
   line-height: 0;
@@ -149,12 +166,12 @@ p.s {
     0 2px 5px rgba(186, 121, 248, 0.5);
 }
 
-p.s:hover {
+.seach-bar:hover {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6),
     0 2px 3px 2px rgba(186, 121, 248, 0.5);
 }
 
-p.s:after {
+.seach-bar:after {
   content: '';
   display: block;
   position: absolute;
@@ -164,13 +181,15 @@ p.s:after {
   bottom: -10px;
   right: -3px;
   border-radius: 0 0 5px 5px;
+  transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
   box-shadow: inset 0 -1px 0 rgbA(255, 255, 255, 0.6),
     -2px 2px 2px rgba(95, 0, 150, 0.4);
+  transition: 0.3s ease;
 }
 
-p.s:hover:after {
+.seach-bar:hover:after {
   box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.6),
     -2px 2px 2px 1px rgba(186, 121, 248, 0.5);
 }
