@@ -6,18 +6,26 @@ const userStore = useUser()
 
 const isScrolled = ref(false)
 const handleScroll = (evt) => {
-  isScrolled.value = (window.scrollY > 200)
+  isScrolled.value = window.scrollY > 200
 }
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 })
 </script>
- 
+
 <template>
-  <nav id="navbar" :class="isScrolled && 'scrolled'" v-if="userStore && userStore.user">
+  <nav
+    id="navbar"
+    :class="isScrolled && 'scrolled'"
+    v-if="userStore && userStore.user"
+  >
     <div class="navbar-banner">
-      <img class="navbar-logo" src="../assets/icon.png" alt="Jing's Magic Book Logo" />
+      <img
+        class="navbar-logo"
+        src="../assets/icon.png"
+        alt="Jing's Magic Book Logo"
+      />
       <div class="navbar-title">Jing's Magic Book</div>
     </div>
     <ul class="navs">
@@ -34,19 +42,24 @@ onMounted(() => {
       </li>
       <li class="iconify" data-icon="iconoir:cart-alt" data-inline="false"></li>
       <!-- NAV BAR USER IMAGE -->
-      <img @click="userStore.logout" :src="userStore.user.uImg" alt="user image" style="width: 50px" />
+      <img
+        @click="userStore.logout"
+        :src="userStore.user.uImg"
+        alt="user image"
+        style="width: 50px"
+      />
       <!-- NAV BAR USER IMAGE -->
     </ul>
   </nav>
 </template>
- 
+
 <style scoped>
 #navbar {
   position: sticky;
   top: 0;
   width: 100%;
   background: #a3a1b9;
-  font-family: "Skranji";
+  font-family: 'Skranji';
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -142,7 +155,7 @@ p.s:hover {
 }
 
 p.s:after {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   width: 5px;

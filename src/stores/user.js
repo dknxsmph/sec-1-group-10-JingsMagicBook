@@ -40,7 +40,7 @@ export const useUser = defineStore('user', () => {
   const isLoggedIn = computed(
     () => user.value != null || CookieUtil.get('userId') != null
   )
-  console.log();
+  console.log()
   return { user, login, logout, loadUser, isLoggedIn }
 })
 
