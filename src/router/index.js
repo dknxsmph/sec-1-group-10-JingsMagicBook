@@ -6,9 +6,18 @@ import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import NotFound from '../views/NotFound.vue'
 import NavbarComp from '../components/Navbar.vue'
-
+import History from '../views/History.vue'
 const history = createWebHistory()
 const routes = [
+  {
+    path: '/history',
+    name: 'History',
+    components: {
+      NavbarComp,
+      default: History,
+    },
+    meta: { requiresAuth: true },
+  },
   {
     path: '/',
     name: 'Home',
