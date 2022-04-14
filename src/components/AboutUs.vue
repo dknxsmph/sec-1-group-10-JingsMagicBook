@@ -11,10 +11,7 @@
     </div>
   </div>
   <div>
-    <a
-      href="https://github.com/dknxsmph/sec-1-group-10-JingsMagicBook.git"
-      target="_blank"
-    >
+    <a href="https://github.com/dknxsmph/sec-1-group-10-JingsMagicBook.git" target="_blank">
       <img class="logo-git" src="../assets/git-icon.png" />
     </a>
   </div>
@@ -33,12 +30,14 @@
   text-align: center;
   padding: 10px;
 }
+
 .content {
   position: relative;
   text-align: center;
   min-width: 80%;
   padding: 2em 0;
 }
+
 .logo {
   position: absolute;
   width: 10%;
