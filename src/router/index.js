@@ -6,6 +6,7 @@ import About from '../views/About.vue'
 import NotFound from '../views/NotFound.vue'
 import NavbarComp from '../components/Navbar.vue'
 import History from '../views/History.vue'
+<<<<<<< HEAD
 import Cart from '../views/Cart.vue'
 
 const history = createWebHistory()
@@ -50,6 +51,25 @@ const routes = [{
             default: Cart,
         },
         meta: { requiresAuth: true },
+=======
+const history = createWebHistory()
+const routes = [
+  {
+    path: '/history',
+    name: 'History',
+    components: {
+      NavbarComp,
+      default: History,
+    },
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/',
+    name: 'Home',
+    components: {
+      NavbarComp,
+      default: Home,
+>>>>>>> f0cfdd7e689f7febbc481095a3c2861ce21a549a
     },
     {
         path: '/:catchNotMatchPath(.*)',

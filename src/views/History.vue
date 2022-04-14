@@ -3,6 +3,7 @@
 </script>
  
 <template>
+<<<<<<< HEAD
     <div id="history">
         <h1>History</h1>
 
@@ -31,4 +32,13 @@
     color: white;
     font-size: 20pt;
 }
+=======
+<div>
+    <h1>Hello</h1>
+</div>
+</template>
+ 
+<style>
+
+>>>>>>> f0cfdd7e689f7febbc481095a3c2861ce21a549a
 </style>
