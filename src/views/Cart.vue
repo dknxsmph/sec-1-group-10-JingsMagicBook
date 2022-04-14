@@ -1,12 +1,20 @@
 <script setup>
+import { ref, onBeforeMount } from 'vue';
+import { useUser } from '../stores/user.js';
+import Cart1 from '../components/Cart.vue';
+
+const item = ref([])
+
+onBeforeMount(async () => {
+    item.value = useUser().user.uCart;
+})
 
 </script>
  
 <template>
     <div id="cart">
         <h1>Cart</h1>
-
-
+        <Cart1 :cart="item" />
     </div>
 </template>
  
