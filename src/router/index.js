@@ -42,6 +42,7 @@ const routes = [{
         },
         meta: { requiresAuth: true },
     },
+
     {
         path: '/cart',
         name: 'Cart',
