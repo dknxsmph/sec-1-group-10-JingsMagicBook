@@ -17,17 +17,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <nav
-    id="navbar"
-    :class="isScrolled && 'scrolled'"
-    v-if="userStore && userStore.user"
-  >
+  <nav id="navbar" :class="isScrolled && 'scrolled'" v-if="userStore && userStore.user">
     <div class="navbar-banner">
-      <img
-        class="navbar-logo"
-        src="../assets/icon.png"
-        alt="Jing's Magic Book Logo"
-      />
+      <img class="navbar-logo" src="../assets/icon.png" alt="Jing's Magic Book Logo" />
       <div class="navbar-title">Jing's Magic Book</div>
     </div>
     <ul class="navs">
@@ -37,21 +29,31 @@ onMounted(() => {
       <li>
         <router-link :to="{ name: 'About' }">About</router-link>
       </li>
-      <li @click="$emit('searchBook', searchInput)">
-        <input name="search" id="search" type="search" v-model="searchInput" />
-      <img class="navbar-logo" src="../assets/search-icon.png" alt="search icon " />
-
+      <li>
+        <router-link :to="{ name: 'History' }">History</router-link>
       </li>
+
+      <li>
+        <input name="search" id="search" type="search" v-model="searchInput" />
+      </li>
+      <img class="navbar-logo" src="../assets/search-icon.png" alt="search icon "
+        @click="$emit('searchBook', searchInput)" />
+
       <li class="iconify" data-icon="iconoir:cart-alt" data-inline="false"></li>
+      <li>
+        <router-link :to="{ name: 'Cart' }">
+          <img class="navbar-logo" src="../assets/cart-icon.png" alt="cart icon " />
+        </router-link>
+      </li>
+
+
       <!-- NAV BAR USER IMAGE -->
-      <img
-        @click="userStore.logout"
-        :src="userStore.user.uImg"
-        alt="user image"
-        style="width: 50px"
-      />
+      <!-- <img @click="profile" :src="userStore.user.uImg" alt="user image" style="width: 50px" /> -->
+
+      <img @click="userStore.logout" :src="userStore.user.uImg" alt="user image" style="width: 50px" />
       <!-- NAV BAR USER IMAGE -->
     </ul>
+
   </nav>
 </template>
 
@@ -113,71 +115,5 @@ ul.navs {
   padding: 8px 32px !important;
   opacity: 0.9;
 }
-<<<<<<< HEAD
 </style>
-=======
-#search {
-  -webkit-appearance: none;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  width: 24px;
-  padding: 0 10px;
-  height: 24px;
-  font-size: 14px;
-  color: #666;
-  line-height: 24px;
-  border: 0;
-  border-radius: 50px;
-  box-shadow: 0 0 0 1px rgba(110, 0, 200, 0.5),
-    inset 0 2px 5px rgba(82, 0, 150, 0.3), 0 2px 0 rgba(255, 255, 255, 0.6);
-  position: relative;
-  z-index: 5;
-  -webkit-transition: 0.3s ease;
-  -moz-transition: 0.3s ease;
-}
 
-#search:focus {
-  outline: none;
-  width: 180px;
-}
-
-p.s {
-  z-index: 4;
-  position: relative;
-  padding: 5px;
-  line-height: 0;
-  border-radius: 100px;
-  background: #b78cdf;
-  background-image: -webkit-linear-gradient(#e2dbff, #b78cdf);
-  background-image: -moz-linear-gradient(#e2dbff, #b78cdf);
-  display: inline-block;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6),
-    0 2px 5px rgba(186, 121, 248, 0.5);
-}
-
-p.s:hover {
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6),
-    0 2px 3px 2px rgba(186, 121, 248, 0.5);
-}
-
-p.s:after {
-  content: '';
-  display: block;
-  position: absolute;
-  width: 5px;
-  height: 20px;
-  background: #b78cdf;
-  bottom: -10px;
-  right: -3px;
-  border-radius: 0 0 5px 5px;
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  box-shadow: inset 0 -1px 0 rgbA(255, 255, 255, 0.6),
-    -2px 2px 2px rgba(95, 0, 150, 0.4);
-}
-
-p.s:hover:after {
-  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.6),
-    -2px 2px 2px 1px rgba(186, 121, 248, 0.5);
-}
-</style>
->>>>>>> 4006380c68441b39e029fd59c444c13f7b0d77ed
