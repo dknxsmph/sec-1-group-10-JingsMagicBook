@@ -29,18 +29,10 @@ onMounted(() => {
       <li>
         <router-link :to="{ name: 'About' }">About</router-link>
       </li>
-<<<<<<< HEAD
+
       <li>
         <router-link :to="{ name: 'History' }">History</router-link>
       </li>
-=======
-       <li>
-        <router-link :to="{ name: 'History' }">History</router-link>
-      </li>
-      <li @click="$emit('search-book', searchInput)">
-        <input name="search" id="search" type="search" v-model="searchInput" />
-      <img class="navbar-logo" src="../assets/search-icon.png" alt="search icon " />
->>>>>>> f0cfdd7e689f7febbc481095a3c2861ce21a549a
 
       <li>
         <input name="search" id="search" type="search" v-model="searchInput" />
@@ -124,12 +116,7 @@ ul.navs {
   padding: 8px 32px !important;
   opacity: 0.9;
 }
-<<<<<<< HEAD
-</style>
-
-=======
-
 </style>
 
 
->>>>>>> f0cfdd7e689f7febbc481095a3c2861ce21a549a
+
