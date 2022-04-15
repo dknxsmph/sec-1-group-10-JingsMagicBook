@@ -15,7 +15,7 @@ import AboutUs from '../components/AboutUs.vue'
 </template>
  
 <style scoped>
-.box{
+.box {
   background-color: rgb(255, 255, 255);
   opacity: 0.7;
   border-radius: 20px;
@@ -23,6 +23,7 @@ import AboutUs from '../components/AboutUs.vue'
   width: 50%;
   height: 50%;
 }
+
 #about {
   background-image: url(../assets/background-img/bg-aboutUs.jpg);
   color: rgb(0, 0, 0);
@@ -34,6 +35,7 @@ import AboutUs from '../components/AboutUs.vue'
   justify-content: center;
   align-items: center;
 }
+
 #about h1 {
   margin-bottom: 600px;
   padding: 50px 0 50px 0;

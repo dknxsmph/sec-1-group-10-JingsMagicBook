@@ -9,10 +9,10 @@ let props = defineProps({
     type: Array,
     require: true,
   },
-  filterBooks:{
+  filterBooks: {
     type: Array
   },
-  showBooks:{
+  showBooks: {
     type: Boolean
   }
 
@@ -40,6 +40,21 @@ const rentBook = async (book) => {
       })
   })
   if (res.status === 200) {
+    await fetch(`http://localhost:5000/books/${book.id}`, {
+      method: 'PUT'
+      ,
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: book.id,
+        bName: book.bName,
+        bDesc: book.bDesc,
+        bStatus: "unavailable",
+        bPrice: book.bPrice,
+        bImg: book.bImg
+      })
+    })
     alert('Book Id : ' + book.id + ' added to cart!');
   }
 }
@@ -57,15 +72,15 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
 
 <template>
 
-   <div class="book-card" v-for="book in books" :key="book.id"  v-show="showBooks == false">
+  <div class="book-card" v-for="book in books" :key="book.id" v-show="showBooks == false">
     <img class="book-card-img" :src="book.bImg" />
     <p class="book-card-name">{{ shouldBookNameTruncate(book.bName, 27) }}</p>
     <div class="book-btn-group">
-       <button class="btn-add-to-cart" @click="rentBook(book)">ADD TO CART</button>
+      <button class="btn-add-to-cart" @click="rentBook(book)">ADD TO CART</button>
     </div>
-  </div> 
-  
-    <div class="book-card" v-for="book in filterBooks" :key="book.id" v-show="showBooks == true" >
+  </div>
+
+  <div class="book-card" v-for="book in filterBooks" :key="book.id" v-show="showBooks == true">
     <img class="book-card-img" :src="book.bImg" />
     <p class="book-card-name">{{ shouldBookNameTruncate(book.bName, 27) }}</p>
     <div class="book-btn-group">

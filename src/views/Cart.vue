@@ -6,6 +6,7 @@ import Cart1 from '../components/Cart.vue';
 const item = ref([])
 
 onBeforeMount(async () => {
+    await useUser().loadUser();
     item.value = useUser().user.uCart;
 })
 
@@ -16,14 +17,14 @@ onBeforeMount(async () => {
         <div>
             <h1>Cart</h1>
         </div>
-       <div class="content-bg">
+        <div class="content-bg">
             <Cart1 :cart="item" />
-       </div>
+        </div>
     </div>
 </template>
  
 <style scoped>
-.content-bg{
+.content-bg {
     margin-top: 40px;
     text-align: center;
     background-color: #C4C4C4;
@@ -31,6 +32,7 @@ onBeforeMount(async () => {
     height: auto;
     opacity: 0.8;
 }
+
 #cart {
     background-image: url(../assets/background-img/bg-home.jpg);
     color: rgb(248, 246, 246);

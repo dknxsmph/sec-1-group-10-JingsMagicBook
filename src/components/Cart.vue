@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onBeforeMount } from 'vue';
+import { useBooks } from '../stores/books.js';
 import { useUser } from '../stores/user.js';
 
 defineProps({
@@ -10,10 +11,13 @@ defineProps({
 })
 
 const newRemove = ref([]);
+const inCart = ref([]);
 
 onBeforeMount(async () => {
   await useUser().loadUser();
+  inCart.value = await useUser().user.uCart;
 })
+
 
 const removeFromCart = async (bookId) => {
   newRemove.value = useUser().user;
@@ -33,7 +37,26 @@ const removeFromCart = async (bookId) => {
       })
   })
   if (res.status === 200) {
-    alert('Book Id : ' + bookId + ' removed from your cart!');
+    inCart.value = inCart.value.filter((p) => p.id !== bookId);
+    const s = await fetch(`http://localhost:5000/books/${bookId}`, {
+      method: 'GET'
+    })
+    const b = await s.json();
+    await fetch(`http://localhost:5000/books/${bookId}`, {
+      method: 'PUT'
+      ,
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: b.id,
+        bName: b.bName,
+        bDesc: b.bDesc,
+        bStatus: "available",
+        bPrice: b.bPrice,
+        bImg: b.bImg,
+      })
+    })
   }
 }
 
@@ -49,10 +72,11 @@ const removeFromCart = async (bookId) => {
         <th>PRICE</th>
         <th>TOTAL</th>
       </tr>
-      <tr v-for="(itx, index) in cart" :key="index">
-
+      <tr v-for="(itx, index) in inCart" :key="index">
         <td>
-          <li> <img :src="itx.bImg"> <b>book id</b> : {{ itx.id }} <br><b>book name </b> : {{ itx.bName }}</li>
+          <li> <span><b>book id : </b>{{ itx.id }} </span><span><b>book name </b> : {{
+            itx.bName
+          }}</span><img :src="itx.bImg"></li>
           <hr>
         </td>
         <td class="days">
@@ -114,7 +138,7 @@ const removeFromCart = async (bookId) => {
 }
 
 .days button {
-    font-family: 'Skranji', cursive;
+  font-family: 'Skranji', cursive;
 
   background-color: rgb(116, 119, 116);
   padding: 8px;
@@ -199,7 +223,7 @@ input[type=number]::-webkit-outer-spin-button {
   font-family: 'Skranji', cursive;
   max-width: 30px;
   padding: .5rem;
- 
+
   border: none;
   border-width: 0 2px;
   font-size: 1rem;
@@ -208,6 +232,6 @@ input[type=number]::-webkit-outer-spin-button {
   text-align: center;
   color: #000000;
 
-  
+
 }
 </style>
