@@ -38,7 +38,19 @@ onMounted(() => {
         </router-link>
       </li>
       <!-- NAV BAR USER IMAGE -->
-      <img @click="userStore.logout" :src="userStore.user.uImg" alt="user image" style="width: 50px" />
+    
+  <!-- <img @click="userStore.logout" :src="userStore.user.uImg" alt="user image" style="width: 50px" /> -->
+      <div class="dropdown">
+  <img class="logo" :src="userStore.user.uImg" alt="user image" style="width: 50px" />
+  <div class="dropdown-content">
+    <h5>User ID : {{userStore.user.id}} </h5> 
+    <h5>Name : {{userStore.user.uName}}</h5> 
+    <h5>Count : {{userStore.user.uBalance}} Bath</h5> 
+    <button class="button-logout" @click="userStore.logout">LOG OUT</button>
+  </div>
+</div>
+
+
       <!-- NAV BAR USER IMAGE -->
     </ul>
   </nav>
@@ -47,6 +59,13 @@ onMounted(() => {
 <style scoped>
 #search {
   border-radius: 5px;
+}
+.button-logout{
+  cursor: pointer;
+  color: white;
+  width: 100%;
+  height: 30px;
+  background-color: red;
 }
 
 .serachIcon-andIconUser {
@@ -83,7 +102,12 @@ onMounted(() => {
   display: flex;
   align-items: center;
 }
-
+.dropdown-content h5{
+  border: 1px solid black;
+}
+.logo{
+  cursor: pointer;
+}
 .navbar-logo {
   width: 45px;
 }
@@ -100,6 +124,31 @@ onMounted(() => {
   padding: 8px 32px !important;
   opacity: 0.9;
 }
+
+
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  border-radius: 5px;
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f9f9f9;
+  width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  padding: 10px 0 0 0;
+}
+
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+.dropdown:hover .dropdown-content {display: block;}
+
 </style>
 
 

@@ -54,7 +54,6 @@
 .logo {
   position: absolute;
   width: 10%;
-  width: 10%;
   left: 2%;
   transition: all 1s ease-out;
 }
