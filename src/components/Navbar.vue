@@ -117,7 +117,8 @@ a {
 }
 
 .dropdown-content h5 {
-  border: 1px solid black;
+  border: .5px solid rgb(95, 92, 92);
+  height: 30px;
 }
 
 .logo {
@@ -132,6 +133,11 @@ a {
   font-size: 16pt;
   margin: 0 25px;
   font-weight: bold;
+}
+
+.button-logout {
+  font-family: 'Skranji';
+
 }
 
 
