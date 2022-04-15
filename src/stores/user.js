@@ -13,7 +13,7 @@ export const useUser = defineStore('user', () => {
     }
 
     user.value = userData
-    CookieUtil.set('userId', userData.uId)
+    CookieUtil.set('userId', userData.id)
     router.push('/')
   }
 
@@ -27,11 +27,11 @@ export const useUser = defineStore('user', () => {
     if (CookieUtil.get('userId')) {
       try {
         const userId = CookieUtil.get('userId')
-        const res = await fetch(`http://localhost:5000/users?uId=${userId}`, {
+        const res = await fetch(`http://localhost:5000/users/${userId}`, {
           method: 'GET',
         })
         const data = await res.json()
-        user.value = data[0]
+        user.value = data;
       } catch (err) {
         console.log(err)
       }

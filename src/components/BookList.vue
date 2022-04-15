@@ -1,10 +1,42 @@
 <script setup>
+import { ref, onBeforeMount } from 'vue';
+import { useUser } from '../stores/user.js';
+
+const newAdded = ref([]);
+
 defineProps({
   books: {
     type: Array,
     require: true,
   },
 })
+
+onBeforeMount(async () => {
+  await useUser().loadUser();
+})
+
+const rentBook = async (bookid) => {
+  newAdded.value = useUser().user;
+  newAdded.value.uCart.push(bookid);
+  const res = await fetch(`http://localhost:5000/users/${useUser().user.id}`, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(
+      {
+        id: newAdded.value.id,
+        uName: newAdded.value.uName,
+        uBalance: newAdded.value.uBalance,
+        uImg: newAdded.value.uImg,
+        uCart: newAdded.value.uCart
+      })
+  })
+  if (res.status === 200) {
+    alert('Book Id : ' + bookid + ' added to cart!');
+  }
+}
+
 /***
  * To transform string if the legnth longer than max length, then relace them with hellips.
  * Ref: https://stackoverflow.com/questions/1199352/smart-way-to-truncate-long-strings
@@ -21,7 +53,7 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
     <img class="book-card-img" :src="book.bImg" />
     <p class="book-card-name">{{ shouldBookNameTruncate(book.bName, 27) }}</p>
     <div class="book-btn-group">
-      <button class="btn-add-to-cart">ADD TO CART</button>
+      <button class="btn-add-to-cart" @click="rentBook(book.bId)">ADD TO CART</button>
     </div>
   </div>
 </template>

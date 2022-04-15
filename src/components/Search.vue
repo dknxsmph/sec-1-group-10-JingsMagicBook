@@ -17,12 +17,12 @@ const search = () => (alert('A Y O O '))
         <input class="input-search" type="text" placeholder="Search" v-model="searchInput">
         <img class="img-icon" src="../assets/search-icon.png" alt="search-icon" @click="search">
         <ul v-for="book in books" :key="book.bId">
-            <li >
+            <li>
 
             </li>
-        </ul>       
+        </ul>
     </div>
-    
+
 </template>
 
 <style>

@@ -1,42 +1,42 @@
 {
     "users": [
         {
-            "uId": 1,
+            "id": 1,
             "uName": "Kim",
             "uBalance": 5000.0,
             "uImg": "../src/assets/users-img/kim.png",
             "uCart": []
         },
         {
-            "uId": 2,
+            "id": 2,
             "uName": "Mint",
             "uBalance": 9999.0,
             "uImg": "../src/assets/users-img/mint.png",
             "uCart": []
         },
         {
-            "uId": 3,
+            "id": 3,
             "uName": "Ny",
             "uBalance": 120.0,
             "uImg": "../src/assets/users-img/ny.png",
             "uCart": []
         },
         {
-            "uId": 4,
+            "id": 4,
             "uName": "Billy",
             "uBalance": 7000.0,
             "uImg": "../src/assets/users-img/billy.png",
             "uCart": []
         },
         {
-            "uId": 5,
+            "id": 5,
             "uName": "Poi",
             "uBalance": 8000.0,
             "uImg": "../src/assets/users-img/boy.png",
             "uCart": []
         },
         {
-            "uId": 203,
+            "id": 203,
             "uName": "AJ-Jing",
             "uBalance": 999999.0,
             "uImg": "../src/assets/users-img/aj-jing.png",
