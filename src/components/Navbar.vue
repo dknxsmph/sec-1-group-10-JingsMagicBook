@@ -1,7 +1,6 @@
 <script setup>
 import { ref, onMounted, onBeforeMount } from 'vue'
 import { useUser } from '../stores/user.js'
-import Dropdown from './Dropdown.vue';
 
 defineEmits(['search-book'])
 const userStore = useUser()
