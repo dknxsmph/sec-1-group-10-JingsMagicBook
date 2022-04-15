@@ -43,17 +43,18 @@ let showLogout = ref(false)
         </router-link>
       </li>
       <!-- NAV BAR USER IMAGE -->
-    
-  <!-- <img @click="userStore.logout" :src="userStore.user.uImg" alt="user image" style="width: 50px" /> -->
+
+      <!-- <img @click="userStore.logout" :src="userStore.user.uImg" alt="user image" style="width: 50px" /> -->
       <div class="dropdown">
-  <img class="logo" @click="showLogout = !showLogout" :src="userStore.user.uImg" alt="user image" style="width: 50px" />
-  <div class="dropdown-content"  v-show="showLogout">
-    <h5>User ID : {{userStore.user.id}} </h5> 
-    <h5>Name : {{userStore.user.uName}}</h5> 
-    <h5>Count : {{userStore.user.uBalance}} Bath</h5> 
-    <button class="button-logout" @click="userStore.logout">LOG OUT</button>
-  </div>
-</div>
+        <img class="logo" @click="showLogout = !showLogout" :src="userStore.user.uImg" alt="user image"
+          style="width: 50px" />
+        <div class="dropdown-content" v-show="showLogout">
+          <h5>User ID : {{ userStore.user.id }} </h5>
+          <h5>Name : {{ userStore.user.uName }}</h5>
+          <h5>Balance : {{ userStore.user.uBalance }} Bath</h5>
+          <button class="button-logout" @click="userStore.logout">LOG OUT</button>
+        </div>
+      </div>
 
 
     </ul>
@@ -65,7 +66,8 @@ let showLogout = ref(false)
 #search {
   border-radius: 5px;
 }
-.button-logout{
+
+.button-logout {
   cursor: pointer;
   color: white;
   font-size: 17px;
@@ -74,10 +76,11 @@ let showLogout = ref(false)
   height: 30px;
 }
 
-a{
+a {
   color: white;
 
 }
+
 .serachIcon-andIconUser {
   display: flex;
   gap: 10px;
@@ -112,12 +115,15 @@ a{
   display: flex;
   align-items: center;
 }
-.dropdown-content h5{
+
+.dropdown-content h5 {
   border: 1px solid black;
 }
-.logo{
+
+.logo {
   cursor: pointer;
 }
+
 .navbar-logo {
   width: 45px;
 }
@@ -150,12 +156,14 @@ a{
   right: 0;
   background-color: #f9f9f9;
   width: 200px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   padding: 10px 0 0 0;
 }
-.dropdown-content {display: block;}
 
+.dropdown-content {
+  display: block;
+}
 </style>
 
 
