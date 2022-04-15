@@ -60,5 +60,6 @@ onBeforeMount(() => {
   display: grid;
   grid-template-columns: repeat(3, auto);
   grid-row-gap: 2em;
+  padding-left: 10%;
 }
 </style>
