@@ -4,6 +4,9 @@ import { useBooks } from '../stores/books.js'
 import { onBeforeMount, ref } from 'vue'
 
 import BookList from '../components/BookList.vue'
+import Search from '../components/Search.vue'
+
+// const searchInput = ref('')
 
 const userStore = useUser()
 const booksStore = useBooks()
@@ -12,20 +15,27 @@ onBeforeMount(() => {
   // Fetching books if the api has any update
   booksStore.fetchBooks()
 })
+
 </script>
 
 <template>
   <div id="home">
-    <div class="container book-list-box" v-if="booksStore.books">
-      <h1>BOOKS FOR RENT</h1>
-      <div class="book-list">
-        <BookList :books="booksStore.books" />
-      </div>
+    <h1>BOOKS FOR RENT</h1>   
+    <Search />
+    <div class="book-list">
+      <BookList :books="booksStore.books" />
     </div>
+
+
   </div>
 </template>
 
 <style scoped>
+.serachIcon-andIconUser {
+  display: flex;
+  justify-content: center;
+}
+
 #home {
   background: url(../assets/background-img/bg-home.jpg);
   background-repeat: no-repeat;
@@ -34,7 +44,7 @@ onBeforeMount(() => {
 }
 
 #home h1 {
-  padding: 50px 0;
+  padding: 50px 0 20px 0;
   text-align: center;
   font-family: 'Skranji', cursive;
   color: white;
@@ -48,8 +58,7 @@ onBeforeMount(() => {
 .book-list {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-column-gap: 1em;
-  grid-row-gap: 1em;
+  grid-template-columns: repeat(3, auto);
+  grid-row-gap: 2em;
 }
 </style>

@@ -2,7 +2,6 @@
 import { ref, onMounted, onBeforeMount } from 'vue'
 import { useUser } from '../stores/user.js'
 defineEmits(['search-book'])
-const searchInput = ref('')
 const userStore = useUser()
 
 

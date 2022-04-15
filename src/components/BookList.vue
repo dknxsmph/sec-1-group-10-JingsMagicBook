@@ -28,7 +28,7 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
 
 <style>
 .book-card {
-  width: 80%;
+  width: 65%;
   border-radius: 1em;
   padding: 8px;
   background-color: rgba(255, 255, 255, 0.69);
@@ -36,7 +36,7 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto;
+  margin: 0 au
 }
 
 .book-card-img {
@@ -44,6 +44,7 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
   width: 100%;
   padding: 8px;
 }
+
 
 .book-card-name {
   font-family: 'Skranji', cursive;
