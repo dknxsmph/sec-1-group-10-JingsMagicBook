@@ -4,11 +4,18 @@ import { useUser } from '../stores/user.js';
 
 const newAdded = ref([]);
 
-defineProps({
+let props = defineProps({
   books: {
     type: Array,
     require: true,
   },
+  filterBooks:{
+    type: Array
+  },
+  showBooks:{
+    type: Boolean
+  }
+
 })
 
 onBeforeMount(async () => {
@@ -49,7 +56,16 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
 </script>
 
 <template>
-  <div class="book-card" v-for="book in books" :key="book.bId">
+
+   <div class="book-card" v-for="book in books" :key="book.id"  v-show="showBooks == false">
+    <img class="book-card-img" :src="book.bImg" />
+    <p class="book-card-name">{{ shouldBookNameTruncate(book.bName, 27) }}</p>
+    <div class="book-btn-group">
+       <button class="btn-add-to-cart" @click="rentBook(book)">ADD TO CART</button>
+    </div>
+  </div> 
+  
+    <div class="book-card" v-for="book in filterBooks" :key="book.id" v-show="showBooks == true" >
     <img class="book-card-img" :src="book.bImg" />
     <p class="book-card-name">{{ shouldBookNameTruncate(book.bName, 27) }}</p>
     <div class="book-btn-group">
@@ -60,7 +76,7 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
 
 <style>
 .book-card {
-  width: 65%;
+  width: 80%;
   border-radius: 1em;
   padding: 8px;
   background-color: rgba(255, 255, 255, 0.69);
@@ -68,7 +84,7 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin: 0 au
+  margin: 0 auto
 }
 
 .book-card-img {
