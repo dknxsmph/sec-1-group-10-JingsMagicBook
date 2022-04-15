@@ -16,11 +16,8 @@ onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 })
 
-<<<<<<< HEAD
-let showLogout = ref(false)
 
-=======
->>>>>>> ead9a96a74f0ae132a3b663898b0b524b42adbe3
+let showLogout = ref(false)
 </script>
 
 <template>
@@ -59,14 +56,6 @@ let showLogout = ref(false)
   </div>
 </div>
 
-
-      <!-- NAV BAR USER IMAGE -->
-      <!-- NAV DROPDOWN -->
-<Dropdown/>    
-
-
-
-  <!-- NAV DROPDOWN -->
 
     </ul>
 
