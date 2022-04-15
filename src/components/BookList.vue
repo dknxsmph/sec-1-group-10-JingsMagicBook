@@ -15,9 +15,9 @@ onBeforeMount(async () => {
   await useUser().loadUser();
 })
 
-const rentBook = async (bookid) => {
+const rentBook = async (book) => {
   newAdded.value = useUser().user;
-  newAdded.value.uCart.push(bookid);
+  newAdded.value.uCart.push(book);
   const res = await fetch(`http://localhost:5000/users/${useUser().user.id}`, {
     method: 'PUT',
     headers: {
@@ -33,7 +33,7 @@ const rentBook = async (bookid) => {
       })
   })
   if (res.status === 200) {
-    alert('Book Id : ' + bookid + ' added to cart!');
+    alert('Book Id : ' + book.id + ' added to cart!');
   }
 }
 
@@ -53,7 +53,7 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
     <img class="book-card-img" :src="book.bImg" />
     <p class="book-card-name">{{ shouldBookNameTruncate(book.bName, 27) }}</p>
     <div class="book-btn-group">
-      <button class="btn-add-to-cart" @click="rentBook(book.bId)">ADD TO CART</button>
+      <button class="btn-add-to-cart" @click="rentBook(book)">ADD TO CART</button>
     </div>
   </div>
 </template>

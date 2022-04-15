@@ -1,7 +1,7 @@
 {
     "books": [
         {
-            "bId": 1,
+            "id": 1,
             "bName": "The Whole Booke Of Psalmes.",
             "bDesc": "The Whole Booke of Psalmes Collected into English Meeter, by T. Sternhold, I. Hopkins, and others.",
             "bStatus": "available",
@@ -9,7 +9,7 @@
             "bImg": "../src/assets/books-img/1.png"
         },
         {
-            "bId": 2,
+            "id": 2,
             "bName": "Three Treatises. MASON (Henry).",
             "bDesc": "1. The Cure of Cares.2. Contentment in Gods Gift.3. The Tribunall of the Conscience. Or, A treatise of Examination.",
             "bStatus": "available",
@@ -17,7 +17,7 @@
             "bImg": "../src/assets/books-img/1.png"
         },
         {
-            "bId": 3,
+            "id": 3,
             "bName": "The Book Of Common Prayer.",
             "bDesc": "The Book of Common Prayer, And Administration of the Sacraments, And Other Rites and Ceremonies of the Church, According to the Use of The Church of England: Together with the Psalter or Psalms of David, Pointed as they are to be sung or said in Churches.",
             "bStatus": "available",
@@ -25,7 +25,7 @@
             "bImg": "../src/assets/books-img/1.png"
         },
         {
-            "bId": 4,
+            "id": 4,
             "bName": "Fables. GAY (John).",
             "bDesc": "Fables with a Life of the Author, and embellished with a Plate to each Fable.",
             "bStatus": "available",
@@ -33,7 +33,7 @@
             "bImg": "../src/assets/books-img/1.png"
         },
         {
-            "bId": 5,
+            "id": 5,
             "bName": "L’Art Des Armes. DANET (Guillaume).",
             "bDesc": "Engraved frontispiece in both volumes and 45 folding plates by Taraval after Vaxcillere.",
             "bStatus": "available",
@@ -41,7 +41,7 @@
             "bImg": "../src/assets/books-img/1.png"
         },
         {
-            "bId": 6,
+            "id": 6,
             "bName": "Pub. Terentii Comoediae Sex. TERENTIUS AFER (Publius).",
             "bDesc": "Pub. Terentii Comoediae Sex Ex recensione Heinsiana.Engraved title, small woodcut portrait, printed in black and red.",
             "bStatus": "available",
@@ -49,7 +49,7 @@
             "bImg": "../src/assets/books-img/1.png"
         },
         {
-            "bId": 7,
+            "id": 7,
             "bName": "The Experienc'd Angler. [VENABLES (Robert)].",
             "bDesc": "The Experienc'd Angler, or Angling Improved.Engraved additional title by Vaughan, with contemporary or early hand-colouring. 10 engravings of fishes in the text.",
             "bStatus": "available",
@@ -57,7 +57,7 @@
             "bImg": "../src/assets/books-img/1.png"
         },
         {
-            "bId": 8,
+            "id": 8,
             "bName": "The Works. FARQUHAR (George).",
             "bDesc": "The Works of the late Ingenious Mr. George Farquhar: Containing all his Letters, Poems, Essays, and Comedies Publish'd in his Life-time. The Comedies are Illustrated with Cuts representing the principal Scenes in each Play. The Second Edition.",
             "bStatus": "available",
@@ -65,7 +65,7 @@
             "bImg": "../src/assets/books-img/1.png"
         },
         {
-            "bId": 9,
+            "id": 9,
             "bName": "The Book Of Common Prayer, [PRAYER BOOK].",
             "bDesc": "BASKERVILLE'S EDITION BOUND BY THE GREEK-KEY BINDER And Administration of the Sacraments, And Other Rites and Ceremonies of the Church, According to the Use of The Church of England: Together with the Psalter or Psalms of David, Pointed as they are to be sung or said in Churches.",
             "bStatus": "available",
