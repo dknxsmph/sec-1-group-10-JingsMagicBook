@@ -1,6 +1,8 @@
 <script setup>
 import { ref, onMounted, onBeforeMount } from 'vue'
 import { useUser } from '../stores/user.js'
+import Dropdown from './Dropdown.vue';
+
 defineEmits(['search-book'])
 const userStore = useUser()
 
@@ -13,9 +15,11 @@ const handleScroll = (evt) => {
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 })
+
 </script>
 
 <template>
+
   <nav id="navbar" :class="isScrolled && 'scrolled'" v-if="userStore && userStore.user">
     <div class="navbar-banner">
       <img class="navbar-logo" src="../assets/icon.png" alt="Jing's Magic Book Logo" />
@@ -40,7 +44,15 @@ onMounted(() => {
       <!-- NAV BAR USER IMAGE -->
       <img @click="userStore.logout" :src="userStore.user.uImg" alt="user image" style="width: 50px" />
       <!-- NAV BAR USER IMAGE -->
+      <!-- NAV DROPDOWN -->
+<Dropdown/>    
+
+
+
+  <!-- NAV DROPDOWN -->
+
     </ul>
+
   </nav>
 </template>
 
