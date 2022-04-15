@@ -13,6 +13,9 @@ const handleScroll = (evt) => {
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 })
+
+let showLogout = ref(false)
+
 </script>
 
 <template>
@@ -41,8 +44,8 @@ onMounted(() => {
     
   <!-- <img @click="userStore.logout" :src="userStore.user.uImg" alt="user image" style="width: 50px" /> -->
       <div class="dropdown">
-  <img class="logo" :src="userStore.user.uImg" alt="user image" style="width: 50px" />
-  <div class="dropdown-content">
+  <img class="logo" @click="showLogout = !showLogout" :src="userStore.user.uImg" alt="user image" style="width: 50px" />
+  <div class="dropdown-content"  v-show="showLogout">
     <h5>User ID : {{userStore.user.id}} </h5> 
     <h5>Name : {{userStore.user.uName}}</h5> 
     <h5>Count : {{userStore.user.uBalance}} Bath</h5> 
@@ -63,11 +66,16 @@ onMounted(() => {
 .button-logout{
   cursor: pointer;
   color: white;
+  font-size: 17px;
+  background-color: red;
   width: 100%;
   height: 30px;
-  background-color: red;
 }
 
+a{
+  color: white;
+
+}
 .serachIcon-andIconUser {
   display: flex;
   gap: 10px;
@@ -85,7 +93,7 @@ onMounted(() => {
   position: sticky;
   top: 0;
   width: 100%;
-  background: #a3a1b9;
+  background: #2C285A;
   font-family: 'Skranji';
   display: flex;
   justify-content: space-between;
@@ -95,7 +103,7 @@ onMounted(() => {
 }
 
 .active-link {
-  color: white !important;
+  color: rgb(233, 200, 39) !important;
 }
 
 .navbar-banner {
@@ -144,10 +152,7 @@ onMounted(() => {
   z-index: 1;
   padding: 10px 0 0 0;
 }
-
-
-.dropdown-content a:hover {background-color: #f1f1f1;}
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown-content {display: block;}
 
 </style>
 
