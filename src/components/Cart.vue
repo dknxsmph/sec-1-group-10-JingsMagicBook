@@ -40,14 +40,18 @@ const removeFromCart = async (bookId) => {
 </script>
 
 <template>
-  <div>
-    <h1>Cart List</h1>
+  <div class="container">
+    <h1 style="color: black; padding-top: 20px;"> Your Cart</h1>
     <ul v-for="(itx, index) in cart" :key="index">
-      <li><b>book id</b> : {{ itx.id }} <br><b>book name </b> : {{ itx.bName }}</li>
+ 
+      <li>      <img :src="itx.bImg">  <b>book id</b> : {{ itx.id }} <br><b>book name </b> : {{ itx.bName }}</li>
       <button @click="removeFromCart(itx.id)">remove from cart</button>
     </ul>
   </div>
 </template>
 
 <style>
+li{
+  list-style: none;
+}
 </style>

@@ -7,7 +7,7 @@ import AboutUs from '../components/AboutUs.vue'
     <h1>About</h1>
 
     <div class="box">
-      <div class="container-content">
+      <div>
         <AboutUs class="content" />
       </div>
     </div>
@@ -15,11 +15,6 @@ import AboutUs from '../components/AboutUs.vue'
 </template>
  
 <style scoped>
-.container-content{
-  display: grid;
-  align-content: center;
-  padding-left: 30px;
-}
 .box{
   background-color: rgb(255, 255, 255);
   opacity: 0.7;
