@@ -11,8 +11,9 @@ const handleScroll = (evt) => {
 }
 
 const showUserDropdown = ref(false)
-const toggleUserDropdown = () =>
-  (showUserDropdown.value = !showUserDropdown.value)
+const toggleUserDropdown = () => {
+  showUserDropdown.value = !showUserDropdown.value
+}
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
@@ -20,10 +21,18 @@ onMounted(() => {
 </script>
 
 <template>
-  <nav id="navbar" :class="isScrolled && 'scrolled'" v-if="userStore && userStore.user">
+  <nav
+    id="navbar"
+    :class="isScrolled && 'scrolled'"
+    v-if="userStore && userStore.user"
+  >
     <div class="navbar-banner">
       <router-link :to="{ path: '/' }">
-        <img class="navbar-logo" src="../assets/icon.png" alt="Jing's Magic Book Logo" />
+        <img
+          class="navbar-logo"
+          src="../assets/icon.png"
+          alt="Jing's Magic Book Logo"
+        />
       </router-link>
       <div class="navbar-title">Jing's Magic Book</div>
     </div>
@@ -41,22 +50,39 @@ onMounted(() => {
       <!-- check if user is aj-jing -->
       <li>
         <router-link :to="{ name: 'Cart' }">
-          <img class="navbar-logo" style="height: 30px; width: 30px" src="../assets/book-mark.png" alt="cart icon " />
+          <img
+            class="navbar-logo"
+            style="height: 30px; width: 30px"
+            src="../assets/book-mark.png"
+            alt="cart icon "
+          />
         </router-link>
       </li>
       <!-- NAV BAR USER IMAGE -->
-
-      <!-- <img @click="userStore.logout" :src="userStore.user.uImg" alt="user image" style="width: 50px" /> -->
-      <div class="dropdown">
-        <img class="logo" @click="toggleUserDropdown" :src="userStore.user.uImg" alt="user image" style="width: 50px" />
-        <div class="dropdown-content" v-show="showUserDropdown">
-          <h5>User ID : {{ userStore.user.id }}</h5>
-          <h5>Name : {{ userStore.user.uName }}</h5>
-          <button class="button-logout" @click="userStore.logout">
-            LOG OUT
-          </button>
+      <li>
+        <img
+          class="user-img"
+          @click="toggleUserDropdown"
+          :src="userStore.user.uImg"
+          alt="user image"
+          style="width: 50px"
+        />
+        <div
+          class="dropdown"
+          :class="showUserDropdown && 'fade-in'"
+          v-show="showUserDropdown"
+        >
+          <div class="dropdown-content">
+            <div class="user-info">
+              <h5>User ID : {{ userStore.user.id }}</h5>
+              <h5>Name : {{ userStore.user.uName }}</h5>
+            </div>
+            <button class="button-logout" @click="userStore.logout">
+              LOG OUT
+            </button>
+          </div>
         </div>
-      </div>
+      </li>
     </ul>
   </nav>
 </template>
@@ -66,30 +92,22 @@ onMounted(() => {
   border-radius: 5px;
 }
 
-.button-logout {
-  cursor: pointer;
-  color: white;
-  font-size: 17px;
-  background-color: red;
-  width: 100%;
-  height: 30px;
-}
-
-a {
-  color: white;
-}
-
-.serachIcon-andIconUser {
-  display: flex;
-  gap: 10px;
-}
-
 .navs-container {
   display: flex;
   gap: 20px;
   list-style-type: none;
   font-size: 20px;
   align-items: center;
+}
+
+.navs-container li a {
+  color: rgb(220, 220, 220);
+  transition: 0.2s ease-out;
+  text-decoration: none;
+}
+
+.navs-container li a:hover {
+  color: white;
 }
 
 #navbar {
@@ -114,13 +132,13 @@ a {
   align-items: center;
 }
 
-.dropdown-content h5 {
-  border: 0.5px solid rgb(95, 92, 92);
-  height: 30px;
+.user-img {
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
-.logo {
-  cursor: pointer;
+.user-img:hover {
+  transform: scale(1.1);
 }
 
 .navbar-logo {
@@ -138,9 +156,19 @@ ul.navs {
   display: flex;
   align-items: center;
 }
-
 .button-logout {
+  cursor: pointer;
+  color: white;
+  font-size: 17px;
+  background-color: rgb(200, 0, 0);
+  width: 100%;
+  height: 30px;
   font-family: 'Skranji';
+  transition: 0.2s ease;
+}
+
+.button-logout:hover {
+  background-color: rgb(220, 0, 0);
 }
 
 .scrolled {
@@ -155,17 +183,38 @@ ul.navs {
 
 .dropdown-content {
   border-radius: 5px;
-  display: none;
   position: absolute;
   right: 0;
   background-color: #f9f9f9;
-  width: 200px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  min-width: 200px;
   z-index: 1;
-  padding: 10px 0 0 0;
+  padding: 1rem;
 }
 
-.dropdown-content {
-  display: block;
+.user-info {
+  line-height: 28px;
+  margin-bottom: 10px;
+}
+
+.fade-in {
+  -webkit-animation: fade-in 0.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in 0.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 </style>

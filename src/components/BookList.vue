@@ -33,19 +33,20 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
           BORROW THIS BOOK
         </button>
         <div v-if="isAdmin">
-          <button class="btn-add-to-cart" @click="$emit('remove-book', book.id)">
+          <button
+            class="btn-add-to-cart"
+            @click="$emit('remove-book', book.id)"
+          >
             REMOVE THIS BOOK
           </button>
         </div>
       </div>
-      <div v-else>
-        <button class="btn-add-to-cart">UNAVAILABLE</button>
-      </div>
+      <div class="book-unavailable" v-else>UNAVAILABLE</div>
     </div>
   </div>
 </template>
 
-<style>
+<style scoped>
 .book-card {
   width: 80%;
   border-radius: 1em;
@@ -91,5 +92,9 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
   cursor: pointer;
   transform: scale(1.1);
   filter: drop-shadow(0 0 0.7rem rgba(255, 255, 255, 0.5));
+}
+
+.book-unavailable {
+  opacity: 0.5;
 }
 </style>
