@@ -23,9 +23,11 @@ const addBook = async () => {
       bImg: '../src/assets/books-img/8.png'
     })
   })
-  if (res.status == 200) {
+  if (res.status == 201) {
     bookName.value = '';
     bookDesc.value = '';
+    window.location.reload();
+
   }
 }
 
@@ -47,7 +49,7 @@ const addBook = async () => {
         <input type="text" id="book-name" placeholder="book name" v-model="bookName">
 
         <label for="description">Description : </label>
-        <input type="text" id="description" placeholder="discription" v-model="bookDesc">
+        <input type="text" id="description" placeholder="description" v-model="bookDesc">
 
         <div class="content-submit">
           <button class="btn-submit" @click="addBook">Submit</button>
@@ -83,7 +85,7 @@ const addBook = async () => {
   padding: 8px;
   border-radius: 2em;
   width: 50%;
-
+  cursor: pointer;
 }
 
 input[type="text"] {
