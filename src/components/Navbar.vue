@@ -41,10 +41,7 @@ let showLogout = ref(false)
       <li>
         <router-link :to="{ name: 'History' }">History</router-link>
       </li>
-      <!-- check if user is aj-jing -->
-      <li v-show="useUser().user.id == 203">
-        <button>Add Book</button>
-      </li>
+    
       <!-- check if user is aj-jing -->
       <li>
         <router-link :to="{ name: 'Cart' }">
