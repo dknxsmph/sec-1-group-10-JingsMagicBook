@@ -9,6 +9,7 @@ export const useBooks = defineStore('books', () => {
     try {
       const res = await fetch('http://localhost:5000/books', { method: 'GET' })
       books.value = await res.json()
+      return books.value
     } catch (err) {
       console.log(err)
     }

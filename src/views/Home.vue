@@ -5,21 +5,24 @@ import { onBeforeMount, ref } from 'vue'
 
 import BookList from '../components/BookList.vue'
 import Search from '../components/Search.vue'
+
 const userStore = useUser()
 const booksStore = useBooks()
 
+const books = ref(booksStore.books)
+
+const filter = (inputFilter) => {
+  books.value = booksStore.books.filter(
+    (book) => book.bName.toLowerCase().indexOf(inputFilter.toLowerCase()) !== -1
+  )
+}
+
 onBeforeMount(() => {
   // Fetching books if the api has any update
-  booksStore.fetchBooks()
+  if (!books.value && !booksStore.books) {
+    booksStore.fetchBooks().then((fetchedBooks) => (books.value = fetchedBooks))
+  }
 })
-let filterBook = ref([])
-let showFilter = ref(false)
-let filter = (inputFilter) => {
-  showFilter.value = true
-  return (filterBook.value = booksStore.books.filter(
-    (book) => book.bName.toLowerCase().indexOf(inputFilter.toLowerCase()) !== -1
-  ))
-}
 </script>
 
 <template>
@@ -28,11 +31,7 @@ let filter = (inputFilter) => {
       <h1>BOOKS FOR RENT</h1>
       <Search @click-search="filter" />
       <div class="book-list">
-        <BookList
-          :books="booksStore.books"
-          :filterBooks="filterBook"
-          :showBooks="showFilter"
-        />
+        <BookList :books="books" />
       </div>
     </div>
   </div>
