@@ -160,7 +160,7 @@ ul.navs {
 }
 
 .scrolled {
-  padding: 8px 32px !important;
+  padding: 2px 32px !important;
   opacity: 0.9;
 }
 
