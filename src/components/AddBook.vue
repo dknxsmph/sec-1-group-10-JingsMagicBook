@@ -4,55 +4,80 @@ import { useUser } from '../stores/user.js'
 const userStore = useUser()
 
 
+const bookName = ref('');
+const bookDesc = ref('');
 
 let showAddBook = ref(false)
+
+
+const addBook = async () => {
+  const res = await fetch(`http://localhost:5000/books/`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      bName: bookName.value,
+      bDesc: bookDesc.value,
+      bStatus: 'available',
+      bImg: '../src/assets/books-img/8.png'
+    })
+  })
+  if (res.status == 200) {
+    bookName.value = '';
+    bookDesc.value = '';
+  }
+}
+
 </script>
 
 <template>
-<div v-if="userStore.user">
-  
-      <li class="buttomAddBook-content" v-show="userStore.user.id == 203" >
-    <button @click="showAddBook = !showAddBook" id="btn-addBook"><p>Add Book</p></button>
-  </li>
+  <div v-if="userStore.user">
 
-<div class="container">
+    <li class="buttomAddBook-content" v-show="userStore.user.id == 203">
+      <button @click="showAddBook = !showAddBook" id="btn-addBook">
+        <p>Add Book</p>
+      </button>
+    </li>
+
+    <div class="container">
       <!-- check if user is aj-jing -->
+      <div class="modal" v-show="userStore.user.id == 203 && showAddBook">
+        <label for="book-name">Book Name : </label>
+        <input type="text" id="book-name" placeholder="book name" v-model="bookName">
 
+        <label for="description">Description : </label>
+        <input type="text" id="description" placeholder="discription" v-model="bookDesc">
 
-  
-  <div class="modal"  v-show="useUser().user.id == 203 && showAddBook" >
-      <label for="book-name">Book Name : </label>
-      <input type="text" id="book-name" placeholder="book name">
+        <div class="content-submit">
+          <button class="btn-submit" @click="addBook">Submit</button>
+        </div>
+      </div>
+    </div>
 
-      <label for="description">Discription : </label>
-      <input type="text" id="description" placeholder="discription">
-
-   <div class="content-submit">
-          <button class="btn-submit">Submit</button>
-   </div>
   </div>
-</div>
-
-</div>
 </template>
 
 <style scoped>
-.buttomAddBook-content{
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    padding: 2% 3% 0 0;
+.buttomAddBook-content {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 2% 3% 0 0;
 }
-.container{
-   width: 100%;
+
+.container {
+  width: 100%;
 }
-.content-submit{
-   display: flex;
-   justify-content: center;
-   padding: 10px 0 5px 0;
-   
+
+.content-submit {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 5px 0;
+
 }
-.btn-submit{
+
+.btn-submit {
   font-family: 'Skranji', cursive;
   background-color: green;
   padding: 8px;
@@ -62,14 +87,14 @@ let showAddBook = ref(false)
 }
 
 input[type="text"] {
- background-color: aliceblue;
- height: 30px;
- 
+  background-color: aliceblue;
+  height: 30px;
+
 }
 
 
-.modal{
-   font-family: 'Skranji', cursive;
+.modal {
+  font-family: 'Skranji', cursive;
   width: 40%;
   height: 100%;
   display: grid;
@@ -79,16 +104,19 @@ input[type="text"] {
   align-items: center;
   margin: 0 auto
 }
+
 #btn-addBook {
   width: 85px;
   height: 33px;
   border-radius: 15px;
   background-color: rgb(25, 161, 223);
 }
+
 p {
   font-size: 16px;
-font-family: 'Skranji', cursive;
+  font-family: 'Skranji', cursive;
 }
+
 #btn-addBook:hover {
   cursor: pointer;
   transform: scale(1.1);

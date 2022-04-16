@@ -30,7 +30,6 @@ const removeFromCart = async (bookId) => {
       {
         id: newRemove.value.id,
         uName: newRemove.value.uName,
-        uBalance: newRemove.value.uBalance,
         uImg: newRemove.value.uImg,
         uCart: newRemove.value.uCart
       })
@@ -52,7 +51,6 @@ const removeFromCart = async (bookId) => {
         bName: b.bName,
         bDesc: b.bDesc,
         bStatus: "available",
-        bPrice: b.bPrice,
         bImg: b.bImg,
       })
     })
@@ -63,13 +61,11 @@ const removeFromCart = async (bookId) => {
 
 <template>
   <div class="container">
-    <h1 style="color: black; padding-top: 20px;"> Your Cart</h1>
+    <h1 style="color: black; padding-top: 20px;"> Your Books</h1>
     <table style="width:100%">
       <tr>
-        <th>PRODUCT LIST</th>
-        <th>DAY</th>
-        <th>PRICE</th>
-        <th>TOTAL</th>
+        <th>BOOK</th>
+        <th>RETURN</th>
       </tr>
       <tr v-for="(itx, index) in inCart" :key="index">
         <td>
@@ -78,35 +74,12 @@ const removeFromCart = async (bookId) => {
           }}</span><img :src="itx.bImg"></li>
           <hr>
         </td>
-        <td class="days">
-          <div class="number-input">
-            <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
-            <input class="quantity" min="0" name="quantity" value="7" type="number">
-            <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
-          </div>
-
-
-        </td>
-        <td>
-          {{ itx.bPrice }}
-        </td>
-        <td>
-          asd
-        </td>
         <td>
           <img @click="removeFromCart(itx.id)" class="remove-icon" style="height: 60px; width: 60px;"
             src="../assets/remove-icon.png" alt="remove icon " />
         </td>
       </tr>
     </table>
-
-    <div class="summary">
-      <h2>Order Summary</h2>
-      <p>Subtotal</p>
-      <p>Total</p>
-      <button>CHECKOUT</button>
-    </div>
-
   </div>
 
 </template>

@@ -18,7 +18,17 @@ onBeforeMount(async () => {
   bookl.value = await useBooks().fetchBooks();
 })
 
-const rentBook = async (book) => {
+const removeBook = async (bookId) => {
+  const res = await fetch(`http://localhost:5000/books/${bookId}`, {
+    method: 'DELETE'
+  })
+  if (res.status == 200) {
+    bookl.value = await useBooks().fetchBooks();
+    alert('Book Id :' + bookId + " removed");
+
+  }
+}
+const borrowBook = async (book) => {
   newAdded.value = useUser().user
   newAdded.value.uCart.push(book)
   const res = await fetch(`http://localhost:5000/users/${useUser().user.id}`, {
@@ -29,7 +39,6 @@ const rentBook = async (book) => {
     body: JSON.stringify({
       id: newAdded.value.id,
       uName: newAdded.value.uName,
-      uBalance: newAdded.value.uBalance,
       uImg: newAdded.value.uImg,
       uCart: newAdded.value.uCart,
     }),
@@ -45,7 +54,6 @@ const rentBook = async (book) => {
         bName: book.bName,
         bDesc: book.bDesc,
         bStatus: 'unavailable',
-        bPrice: book.bPrice,
         bImg: book.bImg,
       }),
     })
@@ -71,7 +79,8 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
     <p class="book-card-name">{{ shouldBookNameTruncate(book.bName, 27) }}</p>
     <div class="book-btn-group">
       <div v-if="book.bStatus == 'available'">
-        <button class="btn-add-to-cart" @click="rentBook(book)"> ADD TO CART</button>
+        <button class="btn-add-to-cart" @click="borrowBook(book)"> BORROW THIS BOOK</button>
+        <button class="btn-add-to-cart" @click="removeBook(book.id)"> REMOVE THIS BOOK</button>
       </div>
       <div v-else>
         <button class="btn-add-to-cart"> UNAVAILABLE</button>

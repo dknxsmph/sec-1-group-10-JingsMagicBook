@@ -32,7 +32,7 @@ onBeforeMount(() => {
      <AddBook  class="btn-add" />
     <div class="container book-list-box" v-if="booksStore.books">
   
-      <h1>BOOKS FOR RENT</h1>
+      <h1>BOOKS FOR BORROW</h1>
       <Search @click-search="filter" />
       <div class="book-list">
         <BookList :books="books" />

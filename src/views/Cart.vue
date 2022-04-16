@@ -15,7 +15,7 @@ onBeforeMount(async () => {
 <template>
     <div id="cart">
         <div>
-            <h1>Cart</h1>
+            <h1>Your Borrowed Books</h1>
         </div>
         <div class="content-bg">
             <Cart1 :cart="item" />
