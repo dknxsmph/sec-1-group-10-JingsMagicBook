@@ -29,9 +29,6 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
     <p class="book-card-name">{{ shouldBookNameTruncate(book.bName, 27) }}</p>
     <div class="book-btn-group">
       <div v-if="book.bStatus == 'available'">
-        <button class="btn-add-to-cart" @click="$emit('borrow-book', book)">
-          BORROW THIS BOOK
-        </button>
         <div v-if="isAdmin">
           <button
             class="btn-add-to-cart"
@@ -40,6 +37,13 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
             REMOVE THIS BOOK
           </button>
         </div>
+        <button
+          class="btn-add-to-cart"
+          @click="$emit('borrow-book', book)"
+          v-else
+        >
+          BORROW THIS BOOK
+        </button>
       </div>
       <div v-else>
         <button class="btn-add-to-cart">UNAVAILABLE</button>

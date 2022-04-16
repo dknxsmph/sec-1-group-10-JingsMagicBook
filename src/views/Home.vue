@@ -73,9 +73,9 @@ onBeforeMount(() => {
       <div class="book-list">
         <BookList
           :books="books"
+          :isAdmin="userStore.user.id === 203"
           @borrow-book="borrowBook"
           @remove-book="removeBook"
-          @isAdmin="userStore.user.id === 203"
         />
       </div>
     </div>
