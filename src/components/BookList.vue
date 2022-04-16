@@ -80,7 +80,9 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
     <div class="book-btn-group">
       <div v-if="book.bStatus == 'available'">
         <button class="btn-add-to-cart" @click="borrowBook(book)"> BORROW THIS BOOK</button>
-        <button class="btn-add-to-cart" @click="removeBook(book.id)"> REMOVE THIS BOOK</button>
+        <div v-if="useUser().user.id == 203">
+          <button class="btn-add-to-cart" @click="removeBook(book.id)"> REMOVE THIS BOOK</button>
+        </div>
       </div>
       <div v-else>
         <button class="btn-add-to-cart"> UNAVAILABLE</button>
