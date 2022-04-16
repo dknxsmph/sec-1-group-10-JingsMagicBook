@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onBeforeMount } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useUser } from '../stores/user.js'
 
 defineEmits(['search-book'])
@@ -10,24 +10,28 @@ const handleScroll = (evt) => {
   isScrolled.value = window.scrollY > 200
 }
 
-
-onBeforeMount(async () => {
-  await useUser().loadUser();
-})
+const showUserDropdown = ref(false)
+const toggleUserDropdown = () =>
+  (showUserDropdown.value = !showUserDropdown.value)
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
-
 })
-
-let showLogout = ref(false)
 </script>
 
 <template>
-  <nav id="navbar" :class="isScrolled && 'scrolled'" v-if="userStore && userStore.user">
+  <nav
+    id="navbar"
+    :class="isScrolled && 'scrolled'"
+    v-if="userStore && userStore.user"
+  >
     <div class="navbar-banner">
       <router-link :to="{ path: '/' }">
-        <img class="navbar-logo" src="../assets/icon.png" alt="Jing's Magic Book Logo" />
+        <img
+          class="navbar-logo"
+          src="../assets/icon.png"
+          alt="Jing's Magic Book Logo"
+        />
       </router-link>
       <div class="navbar-title">Jing's Magic Book</div>
     </div>
@@ -45,16 +49,26 @@ let showLogout = ref(false)
       <!-- check if user is aj-jing -->
       <li>
         <router-link :to="{ name: 'Cart' }">
-          <img class="navbar-logo" style="height: 30px; width: 30px" src="../assets/cart-icon.png" alt="cart icon " />
+          <img
+            class="navbar-logo"
+            style="height: 30px; width: 30px"
+            src="../assets/cart-icon.png"
+            alt="cart icon "
+          />
         </router-link>
       </li>
       <!-- NAV BAR USER IMAGE -->
 
       <!-- <img @click="userStore.logout" :src="userStore.user.uImg" alt="user image" style="width: 50px" /> -->
       <div class="dropdown">
-        <img class="logo" @click="showLogout = !showLogout" :src="userStore.user.uImg" alt="user image"
-          style="width: 50px" />
-        <div class="dropdown-content" v-show="showLogout">
+        <img
+          class="logo"
+          @click="toggleUserDropdown"
+          :src="userStore.user.uImg"
+          alt="user image"
+          style="width: 50px"
+        />
+        <div class="dropdown-content" v-show="showUserDropdown">
           <h5>User ID : {{ userStore.user.id }}</h5>
           <h5>Name : {{ userStore.user.uName }}</h5>
           <h5>Balance : {{ userStore.user.uBalance }} Baht</h5>
