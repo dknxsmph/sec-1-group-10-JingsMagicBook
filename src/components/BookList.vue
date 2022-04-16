@@ -15,8 +15,7 @@ defineProps({
 
 onBeforeMount(async () => {
   await useUser().loadUser()
-  const r = await fetch('http://localhost:5000/books/')
-  bookl.value = await r.json()
+  bookl.value = await useBooks().fetchBooks();
 })
 
 const rentBook = async (book) => {
@@ -50,8 +49,7 @@ const rentBook = async (book) => {
         bImg: book.bImg,
       }),
     })
-    const r = await fetch('http://localhost:5000/books/')
-    bookl.value = await r.json()
+    bookl.value = await useBooks().fetchBooks();
     alert('Book Id : ' + book.id + ' added to cart!')
   }
 }
