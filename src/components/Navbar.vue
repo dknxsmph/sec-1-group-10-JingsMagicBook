@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { useUser } from '../stores/user.js'
 
+defineEmits(['search-book'])
 const userStore = useUser()
 
 const isScrolled = ref(false)
@@ -12,6 +13,8 @@ const handleScroll = (evt) => {
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 })
+
+let showLogout = ref(false)
 </script>
 
 <template>
@@ -30,7 +33,7 @@ onMounted(() => {
       </router-link>
       <div class="navbar-title">Jing's Magic Book</div>
     </div>
-    <ul class="navs">
+    <ul class="navs-container">
       <li>
         <router-link :to="{ name: 'Home' }">Home</router-link>
       </li>
@@ -38,43 +41,103 @@ onMounted(() => {
         <router-link :to="{ name: 'About' }">About</router-link>
       </li>
       <li>
-        <label for="search" class="seach-bar">
-          <input name="search" id="search" type="search" autocomplete="off" />
-        </label>
+        <router-link :to="{ name: 'History' }">History</router-link>
       </li>
+
       <li>
+        <router-link :to="{ name: 'Cart' }">
+          <img
+            class="navbar-logo"
+            style="height: 30px; width: 30px"
+            src="../assets/cart-icon.png"
+            alt="cart icon "
+          />
+        </router-link>
+      </li>
+      <!-- NAV BAR USER IMAGE -->
+
+      <!-- <img @click="userStore.logout" :src="userStore.user.uImg" alt="user image" style="width: 50px" /> -->
+      <div class="dropdown">
         <img
-          class="profile-img"
-          @click="userStore.logout"
+          class="logo"
+          @click="showLogout = !showLogout"
           :src="userStore.user.uImg"
           alt="user image"
+          style="width: 50px"
         />
-      </li>
+        <div class="dropdown-content" v-show="showLogout">
+          <h5>User ID : {{ userStore.user.id }}</h5>
+          <h5>Name : {{ userStore.user.uName }}</h5>
+          <h5>Balance : {{ userStore.user.uBalance }} Baht</h5>
+          <button class="button-logout" @click="userStore.logout">
+            LOG OUT
+          </button>
+        </div>
+      </div>
     </ul>
   </nav>
 </template>
 
 <style scoped>
+#search {
+  border-radius: 5px;
+}
+
+.button-logout {
+  cursor: pointer;
+  color: white;
+  font-size: 17px;
+  background-color: red;
+  width: 100%;
+  height: 30px;
+}
+
+a {
+  color: white;
+}
+
+.serachIcon-andIconUser {
+  display: flex;
+  gap: 10px;
+}
+
+.navs-container {
+  display: flex;
+  gap: 20px;
+  list-style-type: none;
+  font-size: 20px;
+  align-items: center;
+}
+
 #navbar {
   position: sticky;
   top: 0;
   width: 100%;
-  background: #a3a1b9;
+  background: #2c285a;
   font-family: 'Skranji';
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 32px;
+  padding: 5px 32px;
   transition: padding 0.3s ease-out;
 }
 
 .active-link {
-  color: white !important;
+  color: rgb(233, 200, 39) !important;
 }
 
 .navbar-banner {
   display: flex;
   align-items: center;
+}
+
+.dropdown-content h5 {
+  border: 0.5px solid rgb(95, 92, 92);
+  height: 30px;
+}
+
+.logo {
+  cursor: pointer;
 }
 
 .navbar-logo {
@@ -92,21 +155,8 @@ ul.navs {
   display: flex;
   align-items: center;
 }
-
-.navs li {
-  margin: 0 10px;
-  font-size: 16pt;
-}
-
-.navs li a {
-  text-decoration: none;
-  color: rgb(230, 230, 230);
-  font-weight: bold;
-  transition: all 0.3s ease-out;
-}
-
-.navs li a:hover {
-  color: white;
+.button-logout {
+  font-family: 'Skranji';
 }
 
 .scrolled {
@@ -114,83 +164,24 @@ ul.navs {
   opacity: 0.9;
 }
 
-img.profile-img {
-  vertical-align: middle;
-  width: 50px;
-  transition: 0.3s ease-out;
-}
-
-img.profile-img:hover {
-  cursor: pointer;
-  filter: drop-shadow(0 0 0.7rem rgba(255, 255, 255, 0.5));
-}
-
-#search {
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  width: 24px;
-  padding: 0 10px;
-  height: 24px;
-  font-size: 14px;
-  color: #666;
-  line-height: 24px;
-  border: 0;
-  border-radius: 50px;
-  box-shadow: 0 0 0 1px rgba(110, 0, 200, 0.5),
-    inset 0 2px 5px rgba(82, 0, 150, 0.3), 0 2px 0 rgba(255, 255, 255, 0.6);
+.dropdown {
   position: relative;
-  z-index: 5;
-  transition: 0.3s ease;
-  -webkit-transition: 0.3s ease;
-  -moz-transition: 0.3s ease;
-}
-
-#search:focus {
-  cursor: auto;
-  outline: none;
-  width: 180px;
-}
-
-.seach-bar {
-  position: relative;
-  padding: 5px;
-  line-height: 0;
-  border-radius: 100px;
-  background: #b78cdf;
-  background-image: -webkit-linear-gradient(#e2dbff, #b78cdf);
-  background-image: -moz-linear-gradient(#e2dbff, #b78cdf);
   display: inline-block;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6),
-    0 2px 5px rgba(186, 121, 248, 0.5);
 }
 
-.seach-bar:hover {
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6),
-    0 2px 3px 2px rgba(186, 121, 248, 0.5);
-}
-
-.seach-bar:after {
-  content: '';
-  display: block;
+.dropdown-content {
+  border-radius: 5px;
+  display: none;
   position: absolute;
-  width: 5px;
-  height: 20px;
-  background: #b78cdf;
-  bottom: -10px;
-  right: -3px;
-  border-radius: 0 0 5px 5px;
-  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  box-shadow: inset 0 -1px 0 rgbA(255, 255, 255, 0.6),
-    -2px 2px 2px rgba(95, 0, 150, 0.4);
-  transition: 0.3s ease;
+  right: 0;
+  background-color: #f9f9f9;
+  width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 10px 0 0 0;
 }
 
-.seach-bar:hover:after {
-  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.6),
-    -2px 2px 2px 1px rgba(186, 121, 248, 0.5);
+.dropdown-content {
+  display: block;
 }
 </style>
