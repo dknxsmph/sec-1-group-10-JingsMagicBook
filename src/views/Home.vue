@@ -11,26 +11,28 @@ const booksStore = useBooks()
 onBeforeMount(() => {
   // Fetching books if the api has any update
   booksStore.fetchBooks()
-  
 })
 let filterBook = ref([])
 let showFilter = ref(false)
-let filter = (inputFilter)=>{
+let filter = (inputFilter) => {
   showFilter.value = true
- return  filterBook.value = booksStore.books.filter(book =>  book.bName.toLowerCase().indexOf(inputFilter.toLowerCase() ) !== -1)
-  
+  return (filterBook.value = booksStore.books.filter(
+    (book) => book.bName.toLowerCase().indexOf(inputFilter.toLowerCase()) !== -1
+  ))
 }
-
-
 </script>
 
 <template>
   <div id="home">
     <div class="container book-list-box" v-if="booksStore.books">
       <h1>BOOKS FOR RENT</h1>
-      <Search @click-search="filter"/>
+      <Search @click-search="filter" />
       <div class="book-list">
-        <BookList :books="booksStore.books" :filterBooks="filterBook" :showBooks="showFilter" />
+        <BookList
+          :books="booksStore.books"
+          :filterBooks="filterBook"
+          :showBooks="showFilter"
+        />
       </div>
     </div>
   </div>
@@ -42,6 +44,7 @@ let filter = (inputFilter)=>{
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  min-height: 100vh;
 }
 
 #home h1 {

@@ -2,7 +2,6 @@
 import { onBeforeMount } from 'vue'
 import { useUser } from './stores/user.js'
 
-
 const userStore = useUser()
 
 onBeforeMount(() => {
@@ -15,7 +14,6 @@ onBeforeMount(() => {
     <router-view name="NavbarComp"></router-view>
     <router-view></router-view>
   </div>
-
 </template>
 
 <style>
