@@ -85,7 +85,7 @@ onBeforeMount(() => {
 
 <template>
   <div id="home" v-if="userStore.user">
-    <AddBook class="btn-add" @addBook="addBook" />
+    <AddBook class="btn-add" @add-book="addBook" />
     <div class="container book-list-box" v-if="booksStore.books">
       <h1>BOOKS FOR BORROW</h1>
       <Search @click-search="filter" />

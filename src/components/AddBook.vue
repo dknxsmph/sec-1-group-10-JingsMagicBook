@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useUser } from '../stores/user.js'
-defineEmits(['addBook'])
+defineEmits(['add-book'])
 const userStore = useUser()
 
 
@@ -32,7 +32,7 @@ let showAddBook = ref(false)
         <input type="text" id="description" placeholder="description" v-model="bookDesc">
 
         <div class="content-submit">
-          <button class="btn-submit" @click="$emit('addBook', bookName, bookDesc)">Submit</button>
+          <button class="btn-submit" @click="$emit('add-book', bookName, bookDesc)">Submit</button>
         </div>
       </div>
     </div>
