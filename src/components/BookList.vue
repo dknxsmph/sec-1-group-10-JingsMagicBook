@@ -4,9 +4,13 @@ defineProps({
     type: Array,
     require: true,
   },
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
 })
 
-defineEmits(['add-to-cart'])
+defineEmits(['borrow-book', 'remove-book'])
 
 /***
  * To transform string if the legnth longer than max length, then relace them with hellips.
@@ -25,9 +29,17 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
     <p class="book-card-name">{{ shouldBookNameTruncate(book.bName, 27) }}</p>
     <div class="book-btn-group">
       <div v-if="book.bStatus == 'available'">
-        <button class="btn-add-to-cart" @click="$emit('add-to-cart', book)">
-          ADD TO CART
+        <button class="btn-add-to-cart" @click="$emit('borrow-book', book)">
+          BORROW THIS BOOK
         </button>
+        <div v-if="isAdmin">
+          <button
+            class="btn-add-to-cart"
+            @click="$emit('remove-book', book.id)"
+          >
+            REMOVE THIS BOOK
+          </button>
+        </div>
       </div>
       <div v-else>
         <button class="btn-add-to-cart">UNAVAILABLE</button>

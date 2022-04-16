@@ -5,6 +5,7 @@ import { onBeforeMount, ref } from 'vue'
 
 import BookList from '../components/BookList.vue'
 import Search from '../components/Search.vue'
+import AddBook from '../components/AddBook.vue'
 
 const userStore = useUser()
 const booksStore = useBooks()
@@ -17,7 +18,16 @@ const filter = (inputFilter) => {
   )
 }
 
-const rentBook = async (book) => {
+const removeBook = async (bookId) => {
+  const res = await fetch(`http://localhost:5000/books/${bookId}`, {
+    method: 'DELETE',
+  })
+  if (res.status == 200) {
+    alert('Book Id :' + bookId + ' removed')
+  }
+}
+
+const borrowBook = async (book) => {
   userStore.user.uCart.push(book.id)
   try {
     const res = await fetch(
@@ -55,12 +65,18 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <div id="home">
+  <div id="home" v-if="userStore.user">
+    <AddBook class="btn-add" />
     <div class="container book-list-box" v-if="booksStore.books">
-      <h1>BOOKS FOR RENT</h1>
+      <h1>BOOKS FOR BORROW</h1>
       <Search @click-search="filter" />
       <div class="book-list">
-        <BookList :books="books" @add-to-cart="rentBook" />
+        <BookList
+          :books="books"
+          @borrow-book="borrowBook"
+          @remove-book="removeBook"
+          @isAdmin="userStore.user.id === 203"
+        />
       </div>
     </div>
   </div>

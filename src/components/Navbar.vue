@@ -20,18 +20,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <nav
-    id="navbar"
-    :class="isScrolled && 'scrolled'"
-    v-if="userStore && userStore.user"
-  >
+  <nav id="navbar" :class="isScrolled && 'scrolled'" v-if="userStore && userStore.user">
     <div class="navbar-banner">
       <router-link :to="{ path: '/' }">
-        <img
-          class="navbar-logo"
-          src="../assets/icon.png"
-          alt="Jing's Magic Book Logo"
-        />
+        <img class="navbar-logo" src="../assets/icon.png" alt="Jing's Magic Book Logo" />
       </router-link>
       <div class="navbar-title">Jing's Magic Book</div>
     </div>
@@ -45,36 +37,21 @@ onMounted(() => {
       <li>
         <router-link :to="{ name: 'History' }">History</router-link>
       </li>
-      <!-- check if user is aj-jing -->
-      <li v-show="useUser().user.id == 203">
-        <button>Add Book</button>
-      </li>
+
       <!-- check if user is aj-jing -->
       <li>
         <router-link :to="{ name: 'Cart' }">
-          <img
-            class="navbar-logo"
-            style="height: 30px; width: 30px"
-            src="../assets/cart-icon.png"
-            alt="cart icon "
-          />
+          <img class="navbar-logo" style="height: 30px; width: 30px" src="../assets/cart-icon.png" alt="cart icon " />
         </router-link>
       </li>
       <!-- NAV BAR USER IMAGE -->
 
       <!-- <img @click="userStore.logout" :src="userStore.user.uImg" alt="user image" style="width: 50px" /> -->
       <div class="dropdown">
-        <img
-          class="logo"
-          @click="toggleUserDropdown"
-          :src="userStore.user.uImg"
-          alt="user image"
-          style="width: 50px"
-        />
+        <img class="logo" @click="toggleUserDropdown" :src="userStore.user.uImg" alt="user image" style="width: 50px" />
         <div class="dropdown-content" v-show="showUserDropdown">
           <h5>User ID : {{ userStore.user.id }}</h5>
           <h5>Name : {{ userStore.user.uName }}</h5>
-          <h5>Balance : {{ userStore.user.uBalance }} Baht</h5>
           <button class="button-logout" @click="userStore.logout">
             LOG OUT
           </button>

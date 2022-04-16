@@ -1,5 +1,4 @@
 <script setup>
-import { ref, onBeforeMount } from 'vue'
 import { useUser } from '../stores/user.js'
 import { useBooks } from '../stores/books.js'
 import CartList from '../components/CartList.vue'
@@ -7,9 +6,9 @@ import CartList from '../components/CartList.vue'
 const userStore = useUser()
 const bookStore = useBooks()
 
-const removeItem = async (bookId) => {
+const returnBook = async (book) => {
   const newUserData = userStore.user
-  newUserData.uCart = newUserData.uCart.filter((itemId) => itemId !== bookId)
+  newUserData.uCart = newUserData.uCart.filter((itemId) => itemId !== book.id)
   try {
     const res = await fetch(
       `http://localhost:5000/users/${userStore.user.id}`,
@@ -23,9 +22,9 @@ const removeItem = async (bookId) => {
     )
 
     if (res.status === 200) {
-      const newBook = bookStore.findBook(bookId)
+      const newBook = bookStore.findBook(book.id)
       newBook.bStatus = 'available'
-      await fetch(`http://localhost:5000/books/${bookId}`, {
+      await fetch(`http://localhost:5000/books/${book.id}`, {
         method: 'PUT',
         headers: {
           'content-type': 'application/json',
@@ -50,7 +49,7 @@ const removeItem = async (bookId) => {
     >
       <CartList
         :cart-items="userStore.getCartItems"
-        @remove-item="removeItem"
+        @return-book="returnBook"
       />
     </div>
     <div class="content-bg" v-else><h3>No item(s) in your cart.</h3></div>

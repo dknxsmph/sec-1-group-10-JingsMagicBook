@@ -5,7 +5,7 @@ defineProps({
     required: true,
   },
 })
-defineEmits(['remove-item'])
+defineEmits(['return-book'])
 </script>
 
 <template>
@@ -51,7 +51,7 @@ defineEmits(['remove-item'])
         <td>asd</td>
         <td>
           <img
-            @click="$emit('remove-item', cartItem.id)"
+            @click="$emit('return-book', cartItem)"
             class="remove-icon"
             style="height: 60px; width: 60px"
             src="../assets/remove-icon.png"
