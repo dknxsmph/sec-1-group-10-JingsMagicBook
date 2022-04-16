@@ -9,24 +9,25 @@ defineEmits(['return-book'])
 </script>
 
 <template>
-  <div id="cart-list" class="container">
-    <h1 style="color: black; padding-top: 20px">Your Cart</h1>
+  <div class="container">
+    <h1 style=" color: black; padding-top: 20px ">Your Books</h1>
     <table style="width: 100%">
-      <tr>
+      <tr >
         <th>BOOK</th>
         <th>RETURN</th>
       </tr>
-      <tr v-for="(cartItem, index) in cartItems" :key="index">
+  <tr v-for="(cartItem, index) in cartItems" :key="index">
         <td>
           <li>
-            <span><b>book id : </b>{{ cartItem.id }} </span><span><b>book name </b> : {{ cartItem.bName }}</span><img
-              :src="cartItem.bImg" />
+           <th> <img class="bookImg" :src="cartItem.bImg" style="width: 100%;" /></th>
+          <th>  <span class="bookId"><b>book id : </b>{{ cartItem.id }} </span></th>
+            <th><span class="bookName"><b>book name </b> : {{ cartItem.bName}}</span></th>
           </li>
           <hr />
         </td>
-        <td>
+        <td class="return-icon">
           <img @click="$emit('return-book', cartItem)" class="remove-icon" style="height: 60px; width: 60px"
-            src="../assets/remove-icon.png" alt="remove icon " />
+            src="../assets/return-icon.png" alt="remove icon " />
         </td>
       </tr>
     </table>
@@ -34,32 +35,47 @@ defineEmits(['return-book'])
 </template>
 
 <style scoped>
+table {
+  border-bottom: 2px solid black;
+}
+th{
+  border: 2px solid black;
+}
+.bookImg{
+  grid-area: 1/1;
+
+}
+.bookName{
+  grid-area: 2/2;
+}
+.bookId{
+  grid-area: 1/2;
+}
 .container {
   font-family: 'Skranji', cursive;
   color: #000000;
 }
 
 .container img {
-  display: flex;
   width: 20%;
   padding: 8px;
 }
 
-.remove-icon {
-  cursor: pointer;
-  display: flex;
-  margin: right;
+.return-icon {
+  border: 2px solid black;
 }
 
-.container button {}
 
 .container li {
   list-style: none;
   display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+ 
 }
 
 .days button {
   font-family: 'Skranji', cursive;
+
   background-color: rgb(116, 119, 116);
   padding: 8px;
   border-radius: 10em;
@@ -141,6 +157,7 @@ input[type='number']::-webkit-outer-spin-button {
   font-family: 'Skranji', cursive;
   max-width: 30px;
   padding: 0.5rem;
+
   border: none;
   border-width: 0 2px;
   font-size: 1rem;

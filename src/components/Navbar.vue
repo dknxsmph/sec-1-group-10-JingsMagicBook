@@ -41,7 +41,7 @@ onMounted(() => {
       <!-- check if user is aj-jing -->
       <li>
         <router-link :to="{ name: 'Cart' }">
-          <img class="navbar-logo" style="height: 30px; width: 30px" src="../assets/cart-icon.png" alt="cart icon " />
+          <img class="navbar-logo" style="height: 30px; width: 30px" src="../assets/book-mark.png" alt="cart icon " />
         </router-link>
       </li>
       <!-- NAV BAR USER IMAGE -->
