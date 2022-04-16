@@ -1,8 +1,10 @@
 <script setup>
 import { ref, onBeforeMount } from 'vue'
 import { useUser } from '../stores/user.js'
+import { useBooks } from '../stores/books.js'
 
 const newAdded = ref([])
+const bookl = ref([]);
 
 defineProps({
   books: {
@@ -13,6 +15,8 @@ defineProps({
 
 onBeforeMount(async () => {
   await useUser().loadUser()
+  const r = await fetch('http://localhost:5000/books/')
+  bookl.value = await r.json()
 })
 
 const rentBook = async (book) => {
@@ -46,6 +50,8 @@ const rentBook = async (book) => {
         bImg: book.bImg,
       }),
     })
+    const r = await fetch('http://localhost:5000/books/')
+    bookl.value = await r.json()
     alert('Book Id : ' + book.id + ' added to cart!')
   }
 }
@@ -62,13 +68,16 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
 </script>
 
 <template>
-  <div class="book-card" v-for="book in books" :key="book.id">
+  <div class="book-card" v-for="book in bookl" :key="bookl.id">
     <img class="book-card-img" :src="book.bImg" />
     <p class="book-card-name">{{ shouldBookNameTruncate(book.bName, 27) }}</p>
     <div class="book-btn-group">
-      <button class="btn-add-to-cart" @click="rentBook(book)">
-        ADD TO CART
-      </button>
+      <div v-if="book.bStatus == 'available'">
+        <button class="btn-add-to-cart" @click="rentBook(book)"> ADD TO CART</button>
+      </div>
+      <div v-else>
+        <button class="btn-add-to-cart"> UNAVAILABLE</button>
+      </div>
     </div>
   </div>
 </template>

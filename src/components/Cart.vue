@@ -1,6 +1,5 @@
 <script setup>
 import { ref, onBeforeMount } from 'vue';
-import { useBooks } from '../stores/books.js';
 import { useUser } from '../stores/user.js';
 
 defineProps({

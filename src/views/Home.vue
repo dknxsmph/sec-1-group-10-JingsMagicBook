@@ -23,6 +23,7 @@ onBeforeMount(() => {
     booksStore.fetchBooks().then((fetchedBooks) => (books.value = fetchedBooks))
   }
 })
+
 </script>
 
 <template>
