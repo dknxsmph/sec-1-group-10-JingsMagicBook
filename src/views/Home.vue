@@ -57,6 +57,24 @@ const borrowBook = async (book) => {
   }
 }
 
+const addBook = async (bookName, bookDesc) => {
+  const res = await fetch(`http://localhost:5000/books/`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      bName: bookName,
+      bDesc: bookDesc,
+      bStatus: 'available',
+      bImg: '../src/assets/books-img/8.png'
+    })
+  })
+  if (res.status == 201) {
+    books.value = await booksStore.fetchBooks();
+  }
+}
+
 onBeforeMount(() => {
   // Fetching books if the api has any update
   if (!books.value && !booksStore.books) {
@@ -67,7 +85,7 @@ onBeforeMount(() => {
 
 <template>
   <div id="home" v-if="userStore.user">
-    <AddBook class="btn-add" />
+    <AddBook class="btn-add" @addBook="addBook" />
     <div class="container book-list-box" v-if="booksStore.books">
       <h1>BOOKS FOR BORROW</h1>
       <Search @click-search="filter" />

@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useUser } from '../stores/user.js'
+defineEmits(['addBook'])
 const userStore = useUser()
 
 
@@ -9,27 +10,6 @@ const bookDesc = ref('');
 
 let showAddBook = ref(false)
 
-
-const addBook = async () => {
-  const res = await fetch(`http://localhost:5000/books/`, {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      bName: bookName.value,
-      bDesc: bookDesc.value,
-      bStatus: 'available',
-      bImg: '../src/assets/books-img/8.png'
-    })
-  })
-  if (res.status == 201) {
-    bookName.value = '';
-    bookDesc.value = '';
-    window.location.reload();
-
-  }
-}
 
 </script>
 
@@ -52,7 +32,7 @@ const addBook = async () => {
         <input type="text" id="description" placeholder="description" v-model="bookDesc">
 
         <div class="content-submit">
-          <button class="btn-submit" @click="addBook">Submit</button>
+          <button class="btn-submit" @click="$emit('addBook', bookName, bookDesc)">Submit</button>
         </div>
       </div>
     </div>
