@@ -1,11 +1,4 @@
 <script setup>
-import { ref, onBeforeMount } from 'vue'
-import { useUser } from '../stores/user.js'
-import { useBooks } from '../stores/books.js'
-
-const newAdded = ref([])
-const bookl = ref([]);
-
 defineProps({
   books: {
     type: Array,
@@ -13,46 +6,7 @@ defineProps({
   },
 })
 
-onBeforeMount(async () => {
-  await useUser().loadUser()
-  bookl.value = await useBooks().fetchBooks();
-})
-
-const rentBook = async (book) => {
-  newAdded.value = useUser().user
-  newAdded.value.uCart.push(book)
-  const res = await fetch(`http://localhost:5000/users/${useUser().user.id}`, {
-    method: 'PUT',
-    headers: {
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      id: newAdded.value.id,
-      uName: newAdded.value.uName,
-      uBalance: newAdded.value.uBalance,
-      uImg: newAdded.value.uImg,
-      uCart: newAdded.value.uCart,
-    }),
-  })
-  if (res.status === 200) {
-    await fetch(`http://localhost:5000/books/${book.id}`, {
-      method: 'PUT',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        id: book.id,
-        bName: book.bName,
-        bDesc: book.bDesc,
-        bStatus: 'unavailable',
-        bPrice: book.bPrice,
-        bImg: book.bImg,
-      }),
-    })
-    bookl.value = await useBooks().fetchBooks();
-    alert('Book Id : ' + book.id + ' added to cart!')
-  }
-}
+defineEmits(['add-to-cart'])
 
 /***
  * To transform string if the legnth longer than max length, then relace them with hellips.
@@ -66,15 +20,17 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
 </script>
 
 <template>
-  <div class="book-card" v-for="book in bookl" :key="bookl.id">
+  <div class="book-card" v-for="book in books" :key="book.id">
     <img class="book-card-img" :src="book.bImg" />
     <p class="book-card-name">{{ shouldBookNameTruncate(book.bName, 27) }}</p>
     <div class="book-btn-group">
       <div v-if="book.bStatus == 'available'">
-        <button class="btn-add-to-cart" @click="rentBook(book)"> ADD TO CART</button>
+        <button class="btn-add-to-cart" @click="$emit('add-to-cart', book)">
+          ADD TO CART
+        </button>
       </div>
       <div v-else>
-        <button class="btn-add-to-cart"> UNAVAILABLE</button>
+        <button class="btn-add-to-cart">UNAVAILABLE</button>
       </div>
     </div>
   </div>

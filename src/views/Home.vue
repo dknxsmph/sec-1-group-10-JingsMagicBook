@@ -17,13 +17,41 @@ const filter = (inputFilter) => {
   )
 }
 
+const rentBook = async (book) => {
+  userStore.user.uCart.push(book.id)
+  try {
+    const res = await fetch(
+      `http://localhost:5000/users/${userStore.user.id}`,
+      {
+        method: 'PUT',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(userStore.user),
+      }
+    )
+    if (res.status === 200) {
+      book.bStatus = 'unavailable'
+      await fetch(`http://localhost:5000/books/${book.id}`, {
+        method: 'PUT',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(book),
+      })
+      alert('Book Id : ' + book.id + ' added to cart!')
+    }
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 onBeforeMount(() => {
   // Fetching books if the api has any update
   if (!books.value && !booksStore.books) {
     booksStore.fetchBooks().then((fetchedBooks) => (books.value = fetchedBooks))
   }
 })
-
 </script>
 
 <template>
@@ -32,7 +60,7 @@ onBeforeMount(() => {
       <h1>BOOKS FOR RENT</h1>
       <Search @click-search="filter" />
       <div class="book-list">
-        <BookList :books="books" />
+        <BookList :books="books" @add-to-cart="rentBook" />
       </div>
     </div>
   </div>
