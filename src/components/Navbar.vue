@@ -52,7 +52,6 @@ onMounted(() => {
         <div class="dropdown-content" v-show="showUserDropdown">
           <h5>User ID : {{ userStore.user.id }}</h5>
           <h5>Name : {{ userStore.user.uName }}</h5>
-          <h5>Balance : {{ userStore.user.uBalance }} Baht</h5>
           <button class="button-logout" @click="userStore.logout">
             LOG OUT
           </button>
