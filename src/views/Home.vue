@@ -5,7 +5,6 @@ import { onBeforeMount, ref } from 'vue'
 
 import BookList from '../components/BookList.vue'
 import Search from '../components/Search.vue'
-import AddBook from '../components/AddBook.vue'
 
 const userStore = useUser()
 const booksStore = useBooks()
@@ -96,7 +95,6 @@ onBeforeMount(() => {
 
 <template>
   <div id="home" v-if="userStore.user">
-    <AddBook class="btn-add" @add-book="addBook" />
     <div class="container book-list-box" v-if="booksStore.books">
       <h1>BOOKS FOR BORROW</h1>
       <Search @click-search="filter" />

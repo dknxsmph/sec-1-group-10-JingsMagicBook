@@ -6,7 +6,7 @@ import { CookieUtil } from '../utils/CookieUtil.js'
 
 export const useUser = defineStore('user', () => {
   const router = useRouter()
-  const user = ref(null)
+  const user = ref([])
 
   const getCartItems = computed(() => {
     const bookStore = useBooks()
@@ -17,7 +17,7 @@ export const useUser = defineStore('user', () => {
   })
 
   const isAdmin = computed(() => {
-    return user.value.uRole === 'admin'
+    return user.value && user.value.uRole === 'admin'
   })
 
   const login = (userData) => {

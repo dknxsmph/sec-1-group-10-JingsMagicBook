@@ -70,7 +70,7 @@ const routes = [
 ]
 const router = createRouter({ routes, history, linkActiveClass: 'active-link' })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   const userStore = useUser()
 
   const requiresAuth = to.matched.some((record) => record.meta.requiresAuth)
@@ -82,6 +82,11 @@ router.beforeEach((to, from, next) => {
   } else if (hideForAuth && userStore.isLoggedIn) {
     return next({ path: '/' })
   }
+
+  if (adminOnly && !userStore.isAdmin) {
+    return next({ path: '/NotFound' })
+  }
+
   next()
 })
 

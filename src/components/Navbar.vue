@@ -77,7 +77,15 @@ onMounted(() => {
               <h5>User ID : {{ userStore.user.id }}</h5>
               <h5>Name : {{ userStore.user.uName }}</h5>
             </div>
-            <button class="button-logout" @click="userStore.logout">
+            <router-link
+              :to="{ name: 'AdminPanel' }"
+              v-show="userStore.isAdmin"
+            >
+              <button class="button btn-warning" @click="toggleUserDropdown">
+                Admin Panel
+              </button>
+            </router-link>
+            <button class="button btn-danger" @click="userStore.logout">
               LOG OUT
             </button>
           </div>
@@ -144,7 +152,6 @@ onMounted(() => {
 
 .navbar-logo {
   width: 45px;
-    
 }
 @keyframes myAnim {
   0%,
@@ -185,18 +192,30 @@ ul.navs {
   display: flex;
   align-items: center;
 }
-.button-logout {
+
+.button {
   cursor: pointer;
   color: white;
   font-size: 17px;
-  background-color: rgb(200, 0, 0);
   width: 100%;
   height: 30px;
   font-family: 'Skranji';
   transition: 0.2s ease;
 }
 
-.button-logout:hover {
+.button.btn-warning {
+  background-color: darkorange;
+}
+
+.button.btn-warning:hover {
+  background-color: orange;
+}
+
+.button.btn-danger {
+  background-color: rgb(200, 0, 0);
+}
+
+.button.btn-danger:hover {
   background-color: rgb(220, 0, 0);
 }
 
