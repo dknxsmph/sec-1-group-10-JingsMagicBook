@@ -6,8 +6,8 @@ import About from '../views/About.vue'
 import NotFound from '../views/NotFound.vue'
 import NavbarComp from '../components/Navbar.vue'
 import History from '../views/History.vue'
-import Cart from '../views/Cart.vue'
 import AdminPanel from '../views/AdminPanel.vue'
+import YourList from '../views/YourList.vue'
 
 const history = createWebHistory()
 const routes = [
@@ -45,15 +45,6 @@ const routes = [
     meta: { requiresAuth: true },
   },
   {
-    path: '/cart',
-    name: 'Cart',
-    components: {
-      NavbarComp,
-      default: Cart,
-    },
-    meta: { requiresAuth: true },
-  },
-  {
     path: '/admin_panel',
     name: 'AdminPanel',
     components: {
@@ -61,6 +52,15 @@ const routes = [
       default: AdminPanel,
     },
     meta: { requiresAuth: true, adminOnly: true },
+  },
+  {
+    path: '/yourlist',
+    name: 'YourList',
+    components: {
+      NavbarComp,
+      default: YourList,
+    },
+    meta: { requiresAuth: true },
   },
   {
     path: '/:catchNotMatchPath(.*)',

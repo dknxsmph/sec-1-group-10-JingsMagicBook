@@ -1,16 +1,34 @@
 {
     "history": [
         {
-            "id": 0,
-            "username": "AJ-JING",
-            "book": 1,
-            "action": "BORROW"
+            "username": {
+                "id": 203,
+                "uName": "AJ-Jing",
+                "uImg": "../src/assets/users-img/aj-jing.png",
+                "uCart": [
+                    5
+                ]
+            },
+            "bookz": {
+                "bookId": 5,
+                "bookImg": "../src/assets/books-img/5.png"
+            },
+            "action": "BORROW",
+            "id": 0
         },
         {
-            "id": 1,
-            "username": "AJ-JING",
-            "book": 1,
-            "action": "RETURN"
+            "username": {
+                "id": 203,
+                "uName": "AJ-Jing",
+                "uImg": "../src/assets/users-img/aj-jing.png",
+                "uCart": []
+            },
+            "bookz": {
+                "bookId": 5,
+                "bookImg": "../src/assets/books-img/5.png"
+            },
+            "action": "RETURN",
+            "id": 1
         }
     ]
 }

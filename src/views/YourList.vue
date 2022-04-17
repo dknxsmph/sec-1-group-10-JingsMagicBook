@@ -1,7 +1,7 @@
 <script setup>
 import { useUser } from '../stores/user.js'
 import { useBooks } from '../stores/books.js'
-import CartList from '../components/CartList.vue'
+import YourList from '../components/YourList.vue'
 
 const userStore = useUser()
 const bookStore = useBooks()
@@ -37,10 +37,10 @@ const returnBook = async (book) => {
           'content-type': 'application/json',
         },
         body: JSON.stringify({
-          username: userStore.user.uName,
-          book: book.id,
+          username: userStore.user,
+          bookz: { bookId: newBook.id, bookImg: newBook.bImg },
           action: 'RETURN',
-        })
+        }),
       })
     }
   } catch (err) {
@@ -50,15 +50,15 @@ const returnBook = async (book) => {
 </script>
 
 <template>
-  <div id="cart" v-if="userStore.user">
+  <div id="yourList" v-if="userStore.user">
     <div>
-      <h1>Cart</h1>
+      <h1>Your List</h1>
     </div>
     <div class="content-bg" v-if="userStore.getCartItems && userStore.getCartItems.length > 0">
-      <CartList :cart-items="userStore.getCartItems" @return-book="returnBook" />
+      <YourList :cart-items="userStore.getCartItems" @return-book="returnBook" />
     </div>
     <div class="content-bg" v-else>
-      <h3>No item(s) in your cart.</h3>
+      <h3>No item(s) in your list.</h3>
     </div>
   </div>
 </template>
@@ -71,21 +71,24 @@ const returnBook = async (book) => {
   width: 100%;
   height: auto;
   opacity: 0.8;
+  font-family: 'Skranji';
+  color:black;
 }
 
-#cart {
+#yourList {
   background-image: url(../assets/background-img/bg-home.jpg);
   color: rgb(248, 246, 246);
   background-repeat: no-repeat;
   background-size: cover;
   padding: 30px 120px 40px 120px;
-  height: 100vh;
   display: block;
   justify-content: center;
   align-items: flex-start;
+  background-position: center;
+  min-height: 100vh;
 }
 
-#cart h1 {
+#yourList h1 {
   width: 100%;
   text-align: center;
   font-family: 'Skranji';

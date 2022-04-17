@@ -49,12 +49,12 @@ onMounted(() => {
 
       <!-- check if user is aj-jing -->
       <li>
-        <router-link :to="{ name: 'Cart' }">
+        <router-link :to="{ name: 'YourList' }">
           <img
             class="navbar-logo"
             style="height: 30px; width: 30px"
             src="../assets/book-mark.png"
-            alt="cart icon "
+            alt="book mark icon "
           />
         </router-link>
       </li>
@@ -130,6 +130,7 @@ onMounted(() => {
 .navbar-banner {
   display: flex;
   align-items: center;
+  animation: myAnim 8s ease-out 0.3s infinite normal none;
 }
 
 .user-img {
@@ -143,10 +144,38 @@ onMounted(() => {
 
 .navbar-logo {
   width: 45px;
+    
 }
+@keyframes myAnim {
+  0%,
+  100% {
+    transform: translateX(0%);
+    transform-origin: 50% 50%;
+  }
 
+  15% {
+    transform: translateX(-10px) rotate(-2deg);
+  }
+
+  30% {
+    transform: translateX(11px) rotate(2deg);
+  }
+
+  45% {
+    transform: translateX(-10px) rotate(-2.6deg);
+  }
+
+  60% {
+    transform: translateX(6px) rotate(1.4deg);
+  }
+
+  75% {
+    transform: translateX(-3px) rotate(-1.2deg);
+  }
+}
 .navbar-title {
-  font-size: 16pt;
+  font-size: 29px;
+  color: rgb(239, 187, 31);
   margin: 0 25px;
   font-weight: bold;
 }

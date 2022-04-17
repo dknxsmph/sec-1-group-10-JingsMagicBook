@@ -28,7 +28,7 @@ onBeforeMount(async () => {
       <div class="login-header">
         <img class="icon-login" src="../assets/icon.png" alt="icon" />
         <h1 class="title">JING'S MAGIC BOOK</h1>
-        <h3 class="discription">Who's renting</h3>
+        <h3 class="discription">Who's borrowing</h3>
       </div>
 
       <div class="users-box">

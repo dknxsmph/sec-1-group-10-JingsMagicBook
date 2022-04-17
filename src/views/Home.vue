@@ -24,7 +24,7 @@ const removeBook = async (bookId) => {
   })
   if (res.status == 200) {
     books.value = await booksStore.fetchBooks()
-    alert('Book Id :' + bookId + ' removed')
+    // alert('Book Id :' + bookId + ' removed')
   }
 }
 
@@ -50,15 +50,15 @@ const borrowBook = async (book) => {
         },
         body: JSON.stringify(book),
       })
-      alert('Book Id : ' + book.id + ' added to cart!')
+      // alert('Book Id : ' + book.id + ' added to cart!')
       await fetch(`http://localhost:5000/history/`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
         },
         body: JSON.stringify({
-          username: userStore.user.uName,
-          book: book.id,
+          username: userStore.user,
+          bookz: { bookId: book.id, bookImg: book.bImg },
           action: 'BORROW',
         }),
       })
