@@ -19,26 +19,27 @@ defineProps({
                 <th class="status">Status</th>
             </tr>
             <tr v-for="(history, index) in Histories" :key="index">
-                    <th>{{ history.username}} </th>
-                    <th>{{ history.book }}</th>
-                    <th>{{ history.action }}</th>
+                <th>{{ history.username.uName }} </th>
+                <th><img :src="history.bookz.bookImg" /></th>
+                <th>{{ history.bookz.bookId }}</th>
+                <th>{{ history.action }}</th>
             </tr>
         </table>
     </div>
 </template>
 
 <style scoped>
-th{
-    border-bottom:1px groove white ;
-}
-.container {
-background-color:rgb(0, 0, 0 , 0.6);
-width: 70%;
-height: 500px;
-display: grid;
-grid-template-columns: repeat(4 auto);
-align-items: flex-start;
-padding-top:20px ;
+th {
+    border-bottom: 1px groove white;
 }
 
+.container {
+    background-color: rgb(0, 0, 0, 0.6);
+    width: 70%;
+    height: 500px;
+    display: grid;
+    grid-template-columns: repeat(4 auto);
+    align-items: flex-start;
+    padding-top: 20px;
+}
 </style>

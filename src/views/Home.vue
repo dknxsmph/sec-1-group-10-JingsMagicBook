@@ -101,12 +101,8 @@ onBeforeMount(() => {
       <h1>BOOKS FOR BORROW</h1>
       <Search @click-search="filter" />
       <div class="book-list">
-        <BookList
-          :books="books"
-          :isAdmin="userStore.user.id === 203"
-          @borrow-book="borrowBook"
-          @remove-book="removeBook"
-        />
+        <BookList :books="books" :isAdmin="userStore.user.id === 203" @borrow-book="borrowBook"
+          @remove-book="removeBook" />
       </div>
     </div>
   </div>

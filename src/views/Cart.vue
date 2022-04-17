@@ -38,7 +38,7 @@ const returnBook = async (book) => {
         },
         body: JSON.stringify({
           username: userStore.user,
-          book: { bookId: newBook.id, bookImg: newBook.bImg },
+          bookz: { bookId: newBook.id, bookImg: newBook.bImg },
           action: 'RETURN',
         }),
       })
