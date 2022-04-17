@@ -22,7 +22,9 @@ defineProps({
                 <th>{{ history.username.uName }} </th>
                 <th><img id="his-img" style="width: 20%;" :src="history.bookz.bookImg" /></th>
                 <th>{{ history.bookz.bookId }}</th>
-                <th v-if="history.action== 'BORROW' " id="actionStatus" style="color: palevioletred;">{{ history.action }}</th>
+                <th v-if="history.action == 'BORROW'" id="actionStatus" style="color: palevioletred;">{{
+                    history.action
+                }}</th>
                 <th v-else id="actionStatus" style="color: aquamarine;">{{ history.action }}</th>
             </tr>
         </table>
@@ -30,16 +32,19 @@ defineProps({
 </template>
 
 <style scoped>
-
-.user , .book , .bookID , .status{
+.user,
+.book,
+.bookID,
+.status {
     font-size: 20px;
     color: rgb(239, 187, 31);
 }
+
 th {
     border-bottom: 1px groove white;
-        font-family: "Skranji";
-           transform: scale(1.1);
-  filter: drop-shadow(0 0 0.7rem rgba(255, 255, 255, 0.5));
+    font-family: "Skranji";
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 0.7rem rgba(255, 255, 255, 0.5));
 }
 
 .container {
