@@ -80,11 +80,7 @@ let showAddBook = ref(false)
 input[type='text'] {
   background-color: aliceblue;
   height: 30px;
-<<<<<<< HEAD
-=======
   border-radius: 10px;
-
->>>>>>> c5b87013872fe9bcf99eaf1d185513c8faa5ca10
 }
 
 .modal {
@@ -97,17 +93,12 @@ input[type='text'] {
   background-color: rgba(255, 255, 255, 0.69);
   align-items: center;
   margin: 0 auto;
-<<<<<<< HEAD
-=======
   gap: 10px;
   transition-property: background-color;
   transition-duration: 0.5s;
   transition-timing-function: ease-in;
   transition-delay: 0.3s;
-
->>>>>>> c5b87013872fe9bcf99eaf1d185513c8faa5ca10
 }
-
 
 #btn-addBook {
   width: 85px;
