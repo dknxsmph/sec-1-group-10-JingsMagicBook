@@ -28,6 +28,7 @@ defineProps({
                 <th v-else id="actionStatus" style="color: aquamarine;">{{ history.action }}</th>
             </tr>
         </table>
+          <h3 v-show="Histories.length  == 0" style="width: 100%; text-align: center;">No history(s) in history list.</h3>
     </div>
 </template>
 

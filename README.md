@@ -57,7 +57,8 @@ npm run dev
 Open http://localhost:3000/ to see the site locally. Changes to assets will rebuild the site. Refresh to see your changes.
 
 ## 🍀 User Manual ✧ﾟ
-* กดที่ Icon <img src="./src/assets/users-img/kim.png" width="30"> <img src="./src/assets/users-img/mint.png" width="30"> <img src="./src/assets/users-img/ny.png" width="30"> <img src="./src/assets/users-img/billy.png" width="30"> <img src="./src/assets/users-img/boy.png" width="30"> <img src="./src/assets/users-img/aj-jing.png" width="30"> เพื่อ `Login` เข้าสู่ระบบ        
+* กดที่ Icon <img src="./src/assets/users-img/kim.png" width="30"> <img src="./src/assets/users-img/mint.png" width="30"> <img src="./src/assets/users-img/ny.png" width="30"> <img src="./src/assets/users-img/billy.png" width="30"> <img src="./src/assets/users-img/boy.png" width="30"> <img src="./src/assets/users-img/aj-jing.png" width="30"> เพื่อ `Login` เข้าสู่ระบบ
+* โดย icon <img src="./src/assets/users-img/aj-jing.png" width="30">  จะเข้าสู้โหมด Admin สามารถ Add Book ได้ และ สามารถ Remove book และ Borbow ได้  
 * กด `Home` หรือ <img src="./src/assets/icon.png" width="20"> เพื่อมาหน้าหลักของเว็ป
   * สามารถพิมพ์ข้อความในช่อง Search และกด <img src="./src/assets/search-icon.png" width="20"> เพื่อค้นหาหนังสือได้
   * กด `BORROW THIS BOOK` เพื่อยืมหนังสือที่ต้องการ
