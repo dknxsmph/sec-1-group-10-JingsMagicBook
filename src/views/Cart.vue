@@ -37,10 +37,10 @@ const returnBook = async (book) => {
           'content-type': 'application/json',
         },
         body: JSON.stringify({
-          username: userStore.user.uName,
-          book: book.id,
+          username: userStore.user,
+          book: { bookId: newBook.id, bookImg: newBook.bImg },
           action: 'RETURN',
-        })
+        }),
       })
     }
   } catch (err) {
@@ -54,8 +54,14 @@ const returnBook = async (book) => {
     <div>
       <h1>Cart</h1>
     </div>
-    <div class="content-bg" v-if="userStore.getCartItems && userStore.getCartItems.length > 0">
-      <CartList :cart-items="userStore.getCartItems" @return-book="returnBook" />
+    <div
+      class="content-bg"
+      v-if="userStore.getCartItems && userStore.getCartItems.length > 0"
+    >
+      <CartList
+        :cart-items="userStore.getCartItems"
+        @return-book="returnBook"
+      />
     </div>
     <div class="content-bg" v-else>
       <h3>No item(s) in your cart.</h3>
@@ -79,10 +85,11 @@ const returnBook = async (book) => {
   background-repeat: no-repeat;
   background-size: cover;
   padding: 30px 120px 40px 120px;
-  height: 100vh;
   display: block;
   justify-content: center;
   align-items: flex-start;
+  background-position: center;
+  min-height: 100vh;
 }
 
 #cart h1 {
