@@ -31,6 +31,17 @@ const returnBook = async (book) => {
         },
         body: JSON.stringify(newBook),
       })
+      await fetch(`http://localhost:5000/history/`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: userStore.user.uName,
+          book: book.id,
+          action: 'RETURN',
+        })
+      })
     }
   } catch (err) {
     console.log(err)
@@ -43,16 +54,12 @@ const returnBook = async (book) => {
     <div>
       <h1>Cart</h1>
     </div>
-    <div
-      class="content-bg"
-      v-if="userStore.getCartItems && userStore.getCartItems.length > 0"
-    >
-      <CartList
-        :cart-items="userStore.getCartItems"
-        @return-book="returnBook"
-      />
+    <div class="content-bg" v-if="userStore.getCartItems && userStore.getCartItems.length > 0">
+      <CartList :cart-items="userStore.getCartItems" @return-book="returnBook" />
     </div>
-    <div class="content-bg" v-else><h3>No item(s) in your cart.</h3></div>
+    <div class="content-bg" v-else>
+      <h3>No item(s) in your cart.</h3>
+    </div>
   </div>
 </template>
 

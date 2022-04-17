@@ -1,0 +1,16 @@
+{
+    "history": [
+        {
+            "id": 0,
+            "username": "AJ-JING",
+            "book": 1,
+            "action": "BORROW"
+        },
+        {
+            "id": 1,
+            "username": "AJ-JING",
+            "book": 1,
+            "action": "RETURN"
+        }
+    ]
+}

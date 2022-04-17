@@ -1,9 +1,19 @@
-<script setup></script>
+<script setup>
+defineProps({
+    Histories: {
+        type: Object,
+        require: true,
+        default: {}
+    }
+})
+</script>
 
 <template>
     <div>
         <h1>
-           
+            <ul v-for="(history, index) in Histories" :key="history.index">
+                <li> {{ history.username }} {{ history.book }} {{ history.action }}</li>
+            </ul>
         </h1>
     </div>
 </template>

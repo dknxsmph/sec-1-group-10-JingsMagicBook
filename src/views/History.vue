@@ -1,12 +1,20 @@
 <script setup>
+import { onBeforeMount, ref } from 'vue';
+import History1 from '../components/History.vue';
+
+const history = ref([])
+
+onBeforeMount(async () => {
+    history.value = await (await fetch('http://localhost:5000/history', { method: 'GET' })).json()
+})
 
 </script>
+ 
  
 <template>
     <div id="history">
         <h1>History</h1>
-
-
+        <History1 :Histories="history" />
     </div>
 </template>
  

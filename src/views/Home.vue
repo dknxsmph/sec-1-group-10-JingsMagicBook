@@ -51,6 +51,17 @@ const borrowBook = async (book) => {
         body: JSON.stringify(book),
       })
       alert('Book Id : ' + book.id + ' added to cart!')
+      await fetch(`http://localhost:5000/history/`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: userStore.user.uName,
+          book: book.id,
+          action: 'BORROW',
+        })
+      })
     }
   } catch (err) {
     console.log(err)
