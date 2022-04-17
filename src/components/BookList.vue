@@ -33,10 +33,7 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
           BORROW THIS BOOK
         </button>
         <div v-if="isAdmin">
-          <button
-            class="btn-add-to-cart"
-            @click="$emit('remove-book', book.id)"
-          >
+          <button class="btn-add-to-cart" @click="$emit('remove-book', book.id)">
             REMOVE THIS BOOK
           </button>
         </div>
@@ -95,6 +92,7 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
 }
 
 .book-unavailable {
+  font-family: 'Skranji', cursive;
   opacity: 0.5;
 }
 </style>
