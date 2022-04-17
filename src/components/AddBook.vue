@@ -32,7 +32,7 @@ let showAddBook = ref(false)
         <input type="text" id="description" placeholder="description" v-model="bookDesc">
 
         <div class="content-submit">
-          <button class="btn-submit" @click="$emit('add-book', bookName, bookDesc)">Submit</button>
+          <button v-if="bookName.length > 0 && bookDesc.length > 0"  class="btn-submit" @click="$emit('add-book', bookName, bookDesc)">Submit</button>
         </div>
       </div>
     </div>
@@ -71,6 +71,7 @@ let showAddBook = ref(false)
 input[type="text"] {
   background-color: aliceblue;
   height: 30px;
+  border-radius: 10px;
 
 }
 
@@ -84,8 +85,15 @@ input[type="text"] {
   padding: 8px 8px 0 8px;
   background-color: rgba(255, 255, 255, 0.69);
   align-items: center;
-  margin: 0 auto
+  margin: 0 auto;
+  gap: 10px;
+transition-property: background-color;
+transition-duration: 0.5s;
+transition-timing-function: ease-in;
+transition-delay: 0.3s;
+  
 }
+
 
 #btn-addBook {
   width: 85px;
