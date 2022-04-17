@@ -1,22 +1,18 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 import { useUser } from '../stores/user.js'
 defineEmits(['add-book'])
 const userStore = useUser()
 
-
-const bookName = ref('');
-const bookDesc = ref('');
+const bookName = ref('')
+const bookDesc = ref('')
 
 let showAddBook = ref(false)
-
-
 </script>
 
 <template>
   <div v-if="userStore.user">
-
-    <li class="buttomAddBook-content" v-show="userStore.user.id == 203">
+    <li class="buttomAddBook-content" v-show="userStore.isAdmin">
       <button @click="showAddBook = !showAddBook" id="btn-addBook">
         <p>Add Book</p>
       </button>
@@ -24,19 +20,33 @@ let showAddBook = ref(false)
 
     <div class="container">
       <!-- check if user is aj-jing -->
-      <div class="modal" v-show="userStore.user.id == 203 && showAddBook">
+      <div class="modal" v-show="userStore.isAdmin && showAddBook">
         <label for="book-name">Book Name : </label>
-        <input type="text" id="book-name" placeholder="book name" v-model="bookName">
+        <input
+          type="text"
+          id="book-name"
+          placeholder="book name"
+          v-model="bookName"
+        />
 
         <label for="description">Description : </label>
-        <input type="text" id="description" placeholder="description" v-model="bookDesc">
+        <input
+          type="text"
+          id="description"
+          placeholder="description"
+          v-model="bookDesc"
+        />
 
         <div class="content-submit">
-          <button class="btn-submit" @click="$emit('add-book', bookName, bookDesc)">Submit</button>
+          <button
+            class="btn-submit"
+            @click="$emit('add-book', bookName, bookDesc)"
+          >
+            Submit
+          </button>
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -56,7 +66,6 @@ let showAddBook = ref(false)
   display: flex;
   justify-content: center;
   padding: 10px 0 5px 0;
-
 }
 
 .btn-submit {
@@ -68,12 +77,10 @@ let showAddBook = ref(false)
   cursor: pointer;
 }
 
-input[type="text"] {
+input[type='text'] {
   background-color: aliceblue;
   height: 30px;
-
 }
-
 
 .modal {
   font-family: 'Skranji', cursive;
@@ -84,7 +91,7 @@ input[type="text"] {
   padding: 8px 8px 0 8px;
   background-color: rgba(255, 255, 255, 0.69);
   align-items: center;
-  margin: 0 auto
+  margin: 0 auto;
 }
 
 #btn-addBook {

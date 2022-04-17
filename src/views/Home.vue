@@ -23,7 +23,7 @@ const removeBook = async (bookId) => {
     method: 'DELETE',
   })
   if (res.status == 200) {
-    books.value = await booksStore.fetchBooks();
+    books.value = await booksStore.fetchBooks()
     alert('Book Id :' + bookId + ' removed')
   }
 }
@@ -60,7 +60,7 @@ const borrowBook = async (book) => {
           username: userStore.user.uName,
           book: book.id,
           action: 'BORROW',
-        })
+        }),
       })
     }
   } catch (err) {
@@ -78,11 +78,11 @@ const addBook = async (bookName, bookDesc) => {
       bName: bookName,
       bDesc: bookDesc,
       bStatus: 'available',
-      bImg: '../src/assets/books-img/8.png'
-    })
+      bImg: '../src/assets/books-img/8.png',
+    }),
   })
   if (res.status == 201) {
-    books.value = await booksStore.fetchBooks();
+    books.value = await booksStore.fetchBooks()
   }
 }
 
@@ -101,8 +101,12 @@ onBeforeMount(() => {
       <h1>BOOKS FOR BORROW</h1>
       <Search @click-search="filter" />
       <div class="book-list">
-        <BookList :books="books" :isAdmin="userStore.user.id === 203" @borrow-book="borrowBook"
-          @remove-book="removeBook" />
+        <BookList
+          :books="books"
+          :isAdmin="userStore.isAdmin"
+          @borrow-book="borrowBook"
+          @remove-book="removeBook"
+        />
       </div>
     </div>
   </div>

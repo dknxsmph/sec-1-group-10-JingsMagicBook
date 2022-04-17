@@ -16,6 +16,10 @@ export const useUser = defineStore('user', () => {
     )
   })
 
+  const isAdmin = computed(() => {
+    return user.value.uRole === 'admin'
+  })
+
   const login = (userData) => {
     if (!userData) {
       return
@@ -52,7 +56,7 @@ export const useUser = defineStore('user', () => {
   )
 
   console.log()
-  return { user, getCartItems, login, logout, loadUser, isLoggedIn }
+  return { user, getCartItems, login, logout, loadUser, isLoggedIn, isAdmin }
 })
 
 if (import.meta.hot) {

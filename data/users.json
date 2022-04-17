@@ -4,36 +4,42 @@
       "id": 1,
       "uName": "Kim",
       "uImg": "../src/assets/users-img/kim.png",
+      "uRole": "user",
       "uCart": []
     },
     {
       "id": 2,
       "uName": "Mint",
       "uImg": "../src/assets/users-img/mint.png",
+      "uRole": "user",
       "uCart": []
     },
     {
       "id": 3,
       "uName": "Ny",
       "uImg": "../src/assets/users-img/ny.png",
+      "uRole": "user",
       "uCart": []
     },
     {
       "id": 4,
       "uName": "Billy",
       "uImg": "../src/assets/users-img/billy.png",
+      "uRole": "user",
       "uCart": []
     },
     {
       "id": 5,
       "uName": "Poi",
       "uImg": "../src/assets/users-img/boy.png",
+      "uRole": "user",
       "uCart": []
     },
     {
       "id": 203,
       "uName": "AJ-Jing",
       "uImg": "../src/assets/users-img/aj-jing.png",
+      "uRole": "admin",
       "uCart": []
     }
   ]
