@@ -4,16 +4,12 @@
   <div class="container">
     <div class="content">
       <h2>
-        Jing’s Magic Book เป็น Web Application เล็ก ๆ
-        ที่มีการนำเอาความรู้ในรายวิชา INT203 Client-side Web Programming II
-        มาใช้ในการจัดทำเพื่อพัฒนาความรู้และความสามารถที่ได้รับในรายวิชา
+        Jing’s Magic Book เป็น Web Application เล็ก ๆ ที่มีการนำเอาความรู้ในรายวิชา INT203 Client-side Web Programming
+        II มาใช้ในการจัดทำเพื่อพัฒนาความรู้และความสามารถที่ได้รับในรายวิชา
       </h2>
-      <h4>โดย Jing’s Magic Book คือร้านเช่าหนังสือในรูปแบบออนไลน์</h4>
+      <h4>โดย Jing’s Magic Book คือระบบยืมหนังสือในรูปแบบออนไลน์</h4>
       <p>
-        ที่สามารถทำให้คุณเช่าหนังสือหายากของเราไปอ่านได้ในรูปแบบของ E-Book
-        ได้อย่างง่ายดาย เพียงแค่คลิกเลือกหนังสือที่คุณสนใจ แล้วระบุ
-        จำนวนวันเช่าที่ต้องการเช่า และชำระเงินผ่านทางยอดเงินคงเหลือใน Account
-        ของท่านเอง
+        ที่สามารถทำให้คุณยืมหนังสือหายากของเราไปอ่านได้ในรูปแบบของ E-Book ได้อย่างง่ายดาย เพียงแค่คลิกเลือกหนังสือที่คุณสนใจ โดยภายใน Jing’s Magic Book จะมีความสามารถซึ่งถูกแบ่งแยกเป็น component ต่าง ๆ
       </p>
       <p>
         ทางผู้จัดทำได้มีความตั้งใจในการทำ Jing’s Magic Book
@@ -23,10 +19,7 @@
     </div>
   </div>
   <div>
-    <a
-      href="https://github.com/dknxsmph/sec-1-group-10-JingsMagicBook.git"
-      target="_blank"
-    >
+    <a href="https://github.com/dknxsmph/sec-1-group-10-JingsMagicBook.git" target="_blank">
       <img class="logo-git" src="../assets/git-icon.png" />
     </a>
   </div>

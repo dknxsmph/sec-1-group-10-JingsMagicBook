@@ -6,7 +6,7 @@ import About from '../views/About.vue'
 import NotFound from '../views/NotFound.vue'
 import NavbarComp from '../components/Navbar.vue'
 import History from '../views/History.vue'
-import Cart from '../views/Cart.vue'
+import YourList from '../views/YourList.vue'
 
 const history = createWebHistory()
 const routes = [{
@@ -44,11 +44,11 @@ const routes = [{
     },
 
     {
-        path: '/cart',
-        name: 'Cart',
+        path: '/yourlist',
+        name: 'YourList',
         components: {
             NavbarComp,
-            default: Cart,
+            default: YourList,
         },
         meta: { requiresAuth: true },
     },

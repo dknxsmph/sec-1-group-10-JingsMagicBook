@@ -49,10 +49,10 @@ defineEmits(['return-book'])
 
 <style scoped>
 table {
-  border-bottom: 2px solid black;
+  /* border-bottom: 2px solid black; */
 }
 th {
-  border: 2px solid black;
+  /* border: 2px solid black; */
 }
 .book-img {
   grid-area: 1/1;
@@ -66,6 +66,7 @@ th {
 .container {
   font-family: 'Skranji', cursive;
   color: #000000;
+  border-radius: 50%;
 }
 
 .container img {
@@ -74,7 +75,7 @@ th {
 }
 
 .return-icon {
-  border: 2px solid black;
+  /* border: 2px solid black; */
 }
 
 .container li {

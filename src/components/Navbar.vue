@@ -49,12 +49,12 @@ onMounted(() => {
 
       <!-- check if user is aj-jing -->
       <li>
-        <router-link :to="{ name: 'Cart' }">
+        <router-link :to="{ name: 'YourList' }">
           <img
             class="navbar-logo"
             style="height: 30px; width: 30px"
             src="../assets/book-mark.png"
-            alt="cart icon "
+            alt="book mark icon "
           />
         </router-link>
       </li>
