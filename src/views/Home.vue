@@ -1,7 +1,7 @@
 <script setup>
 import { useUser } from '../stores/user.js'
 import { useBooks } from '../stores/books.js'
-import { onBeforeMount, ref } from 'vue'
+import { onBeforeMount } from 'vue'
 
 import BookList from '../components/BookList.vue'
 import Search from '../components/Search.vue'
@@ -49,7 +49,8 @@ onBeforeMount(() => {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  min-height: 100vh;
+  min-height: 100%;
+  padding-top: 1in;
 }
 
 #home h1 {

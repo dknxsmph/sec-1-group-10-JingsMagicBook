@@ -26,7 +26,8 @@ onBeforeMount(async () => {
   color: rgb(248, 246, 246);
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 100vh;
+  min-height: 100%;
+  padding-top: 1in;
 }
 
 #history h1 {

@@ -10,60 +10,83 @@ defineProps({
 
 <template>
   <div class="container">
-    <table>
-      <tr>
-        <th class="user">User</th>
-        <th class="book">Book</th>
-        <th class="bookID">Book ID</th>
-        <th class="status">Status</th>
-      </tr>
-      <tr v-for="(history, index) in histories" :key="index">
-        <th>{{ history.username.uName }}</th>
-        <th>
-          <img id="his-img" style="width: 20%" :src="history.bookz.bookImg" />
-        </th>
-        <th>{{ history.bookz.bookId }}</th>
-        <th
-          v-if="history.action == 'BORROW'"
-          id="actionStatus"
-          style="color: palevioletred"
-        >
-          {{ history.action }}
-        </th>
-        <th v-else id="actionStatus" style="color: aquamarine">
-          {{ history.action }}
-        </th>
-      </tr>
+    <table id="history-list" v-if="histories.length > 0">
+      <thead>
+        <tr>
+          <th class="user">User</th>
+          <th class="book">Book</th>
+          <th class="book-id">Book ID</th>
+          <th class="status">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(history, index) in histories" :key="index">
+          <td>{{ history.username.uName }}</td>
+          <td>
+            <img id="his-img" style="width: 50%" :src="history.bookz.bookImg" />
+          </td>
+          <td>{{ history.bookz.bookId }}</td>
+          <td
+            :style="{
+              color:
+                history.action == 'BORROW' ? 'palevioletred' : 'aquamarine',
+            }"
+          >
+            {{ history.action }}
+          </td>
+        </tr>
+      </tbody>
     </table>
-    <h3 v-show="histories.length == 0" style="width: 100%; text-align: center">
+    <h3 v-else style="width: 100%; text-align: center">
       No history(s) in history list.
     </h3>
   </div>
 </template>
 
 <style scoped>
-.user,
-.book,
-.bookID,
-.status {
-  font-size: 20px;
-  color: rgb(239, 187, 31);
+#history-list {
+  width: 100%;
+  font-family: 'Skranji';
+  border-collapse: collapse;
+  background-color: rgb(0, 0, 0, 0.6);
 }
 
-th {
-  border-bottom: 1px groove white;
-  font-family: 'Skranji';
-  transform: scale(1.1);
+#history-list thead tr {
+  padding: 12px 8px;
+  color: rgb(239, 187, 31);
+  background-color: black;
+}
+
+#history-list thead tr th {
+  padding: 10px;
+  font-size: 22px;
   filter: drop-shadow(0 0 0.7rem rgba(255, 255, 255, 0.5));
 }
 
-.container {
-  background-color: rgb(0, 0, 0, 0.6);
-  width: 70%;
-  height: auto;
-  display: grid;
-  grid-template-columns: repeat(4 auto);
-  align-items: flex-start;
-  padding-top: 20px;
+#history-list thead,
+tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+#history-list tbody {
+  display: block;
+  overflow-y: auto;
+  height: 400px !important;
+}
+
+#history-list tbody tr td {
+  text-align: center;
+  filter: drop-shadow(0 0 0.7rem rgba(255, 255, 255, 0.5));
+}
+
+#history-list tbody tr {
+  height: 150px;
+  margin: 10px 0;
+}
+
+#history-list tbody tr:not(:last-child) {
+  border-bottom: 1px groove rgba(200, 200, 200, 1);
 }
 </style>

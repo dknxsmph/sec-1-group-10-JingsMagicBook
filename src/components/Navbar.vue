@@ -111,7 +111,7 @@ onMounted(() => {
 }
 
 #navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
   width: 100%;
   background: #2c285a;
@@ -121,6 +121,7 @@ onMounted(() => {
   align-items: center;
   padding: 5px 32px;
   transition: padding 0.3s ease-out;
+  z-index: 99;
 }
 
 .active-link {
@@ -144,7 +145,6 @@ onMounted(() => {
 
 .navbar-logo {
   width: 45px;
-    
 }
 @keyframes myAnim {
   0%,

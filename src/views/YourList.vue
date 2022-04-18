@@ -50,20 +50,45 @@ const returnBook = async (book) => {
 </script>
 
 <template>
-  <div id="yourList" v-if="userStore.user">
-    <div>
+  <div id="your-list" v-if="userStore.user">
+    <div class="container">
       <h1>Your List</h1>
-    </div>
-    <div class="content-bg" v-if="userStore.getCartItems && userStore.getCartItems.length > 0">
-      <YourList :cart-items="userStore.getCartItems" @return-book="returnBook" />
-    </div>
-    <div class="content-bg" v-else>
-      <h3>No item(s) in your list.</h3>
+      <div
+        class="content-bg"
+        v-if="userStore.getCartItems && userStore.getCartItems.length > 0"
+      >
+        <YourList
+          :cart-items="userStore.getCartItems"
+          @return-book="returnBook"
+        />
+      </div>
+      <div class="content-bg" v-else>
+        <h3>No item(s) in your list.</h3>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+#your-list {
+  background-image: url(../assets/background-img/bg-home.jpg);
+  color: rgb(248, 246, 246);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  justify-content: center;
+  align-items: flex-start;
+  background-position: center;
+  min-height: 100vh;
+  padding-top: 1in;
+}
+#your-list h1 {
+  width: 100%;
+  text-align: center;
+  font-family: 'Skranji';
+  color: white;
+  font-size: 20pt;
+}
 .content-bg {
   margin-top: 40px;
   text-align: center;
@@ -72,27 +97,6 @@ const returnBook = async (book) => {
   height: auto;
   opacity: 0.8;
   font-family: 'Skranji';
-  color:black;
-}
-
-#yourList {
-  background-image: url(../assets/background-img/bg-home.jpg);
-  color: rgb(248, 246, 246);
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 30px 120px 40px 120px;
-  display: block;
-  justify-content: center;
-  align-items: flex-start;
-  background-position: center;
-  min-height: 100vh;
-}
-
-#yourList h1 {
-  width: 100%;
-  text-align: center;
-  font-family: 'Skranji';
-  color: white;
-  font-size: 20pt;
+  color: black;
 }
 </style>

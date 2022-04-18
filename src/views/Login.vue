@@ -45,7 +45,7 @@ onBeforeMount(async () => {
   background-repeat: no-repeat;
   background-size: cover;
   padding: 30px 120px 40px 120px;
-  height: 100vh;
+  min-height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -3,15 +3,15 @@
 <template>
   <div class="container">
     <div class="content">
-      <p>Jing’s Magic Book เป็น Web Application เล็ก ๆ ที่มีการนำเอาความรู้ในรายวิชา INT203 Client-side Web Programming II
-         มาใช้ในการจัดทำเพื่อพัฒนาความรู้และความสามารถที่ได้รับในรายวิชา โดย Jing’s Magic Book คือระบบยืมหนังสือในรูปแบบออนไลน์ 
-        ที่สามารถทำให้คุณยืมหนังสือหายากของเราไปอ่านได้ในรูปแบบของ E-Book ได้อย่างง่ายดาย เพียงแค่คลิกเลือกหนังสือที่คุณสนใจ </p>
+      <p>
+        Jing’s Magic Book เป็น Web Application เล็ก ๆ
+        ที่มีการนำเอาความรู้ในรายวิชา INT203 Client-side Web Programming II
+        มาใช้ในการจัดทำเพื่อพัฒนาความรู้และความสามารถที่ได้รับในรายวิชา โดย
+        Jing’s Magic Book คือระบบยืมหนังสือในรูปแบบออนไลน์
+        ที่สามารถทำให้คุณยืมหนังสือหายากของเราไปอ่านได้ในรูปแบบของ E-Book
+        ได้อย่างง่ายดาย เพียงแค่คลิกเลือกหนังสือที่คุณสนใจ
+      </p>
     </div>
-  </div>
-  <div>
-    <a href="https://github.com/dknxsmph/sec-1-group-10-JingsMagicBook.git" target="_blank">
-      <img class="logo-git" src="../assets/git-icon.png" />
-    </a>
   </div>
 </template>
 

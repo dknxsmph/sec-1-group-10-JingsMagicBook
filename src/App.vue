@@ -10,10 +10,8 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <div>
-    <router-view name="NavbarComp"></router-view>
-    <router-view></router-view>
-  </div>
+  <router-view name="NavbarComp"></router-view>
+  <router-view></router-view>
 </template>
 
 <style>
@@ -30,10 +28,17 @@ button {
   border: none;
 }
 
+body,
+html {
+  position: relative;
+  height: 100vh;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 .container {
