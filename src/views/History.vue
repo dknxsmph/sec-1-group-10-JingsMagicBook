@@ -5,9 +5,12 @@ import HistoryList from '../components/HistoryList.vue'
 const history = ref([])
 
 onBeforeMount(async () => {
-  history.value = await fetch('http://localhost:5000/history', {
-    method: 'GET',
-  }).then((res) => res.json())
+  history.value = await fetch(
+    'http://localhost:5000/history?_sort=id&_order=desc',
+    {
+      method: 'GET',
+    }
+  ).then((res) => res.json())
 })
 </script>
 
