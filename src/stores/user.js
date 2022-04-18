@@ -16,6 +16,22 @@ export const useUser = defineStore('user', () => {
     )
   })
 
+  const addBookToCart = async (bookId) => {
+    user.value.uCart.push(bookId)
+    try {
+      const res = await fetch(`http://localhost:5000/users/${user.value.id}`, {
+        method: 'PUT',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(user.value),
+      })
+      return res.status === 200
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   const login = (userData) => {
     if (!userData) {
       return
@@ -52,7 +68,15 @@ export const useUser = defineStore('user', () => {
   )
 
   console.log()
-  return { user, getCartItems, login, logout, loadUser, isLoggedIn }
+  return {
+    user,
+    getCartItems,
+    addBookToCart,
+    login,
+    logout,
+    loadUser,
+    isLoggedIn,
+  }
 })
 
 if (import.meta.hot) {

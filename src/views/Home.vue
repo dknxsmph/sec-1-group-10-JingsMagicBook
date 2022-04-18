@@ -6,11 +6,12 @@ import { onBeforeMount, ref } from 'vue'
 import BookList from '../components/BookList.vue'
 import Search from '../components/Search.vue'
 import AddBook from '../components/AddBook.vue'
+import { storeToRefs } from 'pinia'
 
 const userStore = useUser()
 const booksStore = useBooks()
 
-const books = ref(booksStore.books)
+const { books } = storeToRefs(booksStore)
 
 const filter = (inputFilter) => {
   books.value = booksStore.books.filter(
@@ -18,91 +19,25 @@ const filter = (inputFilter) => {
   )
 }
 
-const removeBook = async (bookId) => {
-  const res = await fetch(`http://localhost:5000/books/${bookId}`, {
-    method: 'DELETE',
-  })
-  if (res.status == 200) {
-    books.value = await booksStore.fetchBooks()
-    // alert('Book Id :' + bookId + ' removed')
-  }
-}
-
-const borrowBook = async (book) => {
-  userStore.user.uCart.push(book.id)
-  try {
-    const res = await fetch(
-      `http://localhost:5000/users/${userStore.user.id}`,
-      {
-        method: 'PUT',
-        headers: {
-          'content-type': 'application/json',
-        },
-        body: JSON.stringify(userStore.user),
-      }
-    )
-    if (res.status === 200) {
-      book.bStatus = 'unavailable'
-      await fetch(`http://localhost:5000/books/${book.id}`, {
-        method: 'PUT',
-        headers: {
-          'content-type': 'application/json',
-        },
-        body: JSON.stringify(book),
-      })
-      // alert('Book Id : ' + book.id + ' added to cart!')
-      await fetch(`http://localhost:5000/history/`, {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-        },
-        body: JSON.stringify({
-          username: userStore.user,
-          bookz: { bookId: book.id, bookImg: book.bImg },
-          action: 'BORROW',
-        }),
-      })
-    }
-  } catch (err) {
-    console.log(err)
-  }
-}
-
-const addBook = async (bookName, bookDesc) => {
-  const res = await fetch(`http://localhost:5000/books/`, {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      bName: bookName,
-      bDesc: bookDesc,
-      bStatus: 'available',
-      bImg: '../src/assets/books-img/8.png',
-    }),
-  })
-  if (res.status == 201) {
-    books.value = await booksStore.fetchBooks()
-  }
-}
-
 onBeforeMount(() => {
   // Fetching books if the api has any update
-  if (!books.value && !booksStore.books) {
-    booksStore.fetchBooks().then((fetchedBooks) => (books.value = fetchedBooks))
-  }
+  booksStore.fetchBooks()
 })
 </script>
 
 <template>
   <div id="home" v-if="userStore.user">
-    <AddBook class="btn-add" @add-book="addBook" />
-    <div class="container book-list-box" v-if="booksStore.books">
+    <AddBook class="btn-add" @add-book="booksStore.addBook" />
+    <div class="container book-list-box" v-if="books">
       <h1>BOOKS FOR BORROW</h1>
       <Search @click-search="filter" />
       <div class="book-list">
-        <BookList :books="books" :isAdmin="userStore.user.id === 203" @borrow-book="borrowBook"
-          @remove-book="removeBook" />
+        <BookList
+          :books="books"
+          :isAdmin="userStore.user.id === 203"
+          @borrow-book="booksStore.borrowBook"
+          @remove-book="booksStore.removeBook"
+        />
       </div>
     </div>
   </div>
