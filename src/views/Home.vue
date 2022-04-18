@@ -1,17 +1,16 @@
 <script setup>
 import { useUser } from '../stores/user.js'
 import { useBooks } from '../stores/books.js'
-import { onBeforeMount } from 'vue'
+import { onBeforeMount, ref } from 'vue'
 
 import BookList from '../components/BookList.vue'
 import Search from '../components/Search.vue'
 import AddBook from '../components/AddBook.vue'
-import { storeToRefs } from 'pinia'
 
 const userStore = useUser()
 const booksStore = useBooks()
 
-const { books } = storeToRefs(booksStore)
+const books = ref(booksStore.value)
 
 const filter = (inputFilter) => {
   books.value = booksStore.books.filter(
@@ -19,9 +18,9 @@ const filter = (inputFilter) => {
   )
 }
 
-onBeforeMount(() => {
+onBeforeMount(async () => {
   // Fetching books if the api has any update
-  booksStore.fetchBooks()
+  books.value = await booksStore.fetchBooks()
 })
 </script>
 
