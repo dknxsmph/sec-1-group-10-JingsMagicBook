@@ -1,6 +1,6 @@
 <script setup>
 import { onBeforeMount, ref } from 'vue'
-import History1 from '../components/History.vue'
+import HistoryList from '../components/HistoryList.vue'
 
 const history = ref([])
 
@@ -16,7 +16,7 @@ onBeforeMount(async () => {
     <div id="title-history">
       <h1>History</h1>
     </div>
-    <History1 :Histories="history" />
+    <HistoryList :histories="history" />
   </div>
 </template>
 
