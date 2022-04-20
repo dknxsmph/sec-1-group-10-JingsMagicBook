@@ -6,33 +6,36 @@ import { onBeforeMount, ref } from 'vue'
 import BookList from '../components/BookList.vue'
 import Search from '../components/Search.vue'
 import AddBook from '../components/AddBook.vue'
+import { storeToRefs } from 'pinia'
 
 const userStore = useUser()
 const booksStore = useBooks()
 
-const books = ref(booksStore.value)
+const { books } = storeToRefs(booksStore)
+const filteredBooks = ref([])
 
 const filter = (inputFilter) => {
-  books.value = booksStore.books.filter(
+  filteredBooks.value = books.value.filter(
     (book) => book.bName.toLowerCase().indexOf(inputFilter.toLowerCase()) !== -1
   )
 }
 
 onBeforeMount(async () => {
   // Fetching books if the api has any update
-  books.value = await booksStore.fetchBooks()
+  await booksStore.fetchBooks()
 })
 </script>
 
 <template>
   <div id="home" v-if="userStore.user">
-    <AddBook class="btn-add" @add-book="booksStore.addBook" />
+    <AddBook @add-book="booksStore.addBook" />
     <div class="container book-list-box" v-if="books">
       <h1>BOOKS FOR BORROW</h1>
       <Search @click-search="filter" />
       <div class="book-list">
         <BookList
           :books="books"
+          :filteredBooks="filteredBooks"
           :isAdmin="userStore.user.id === 203"
           @borrow-book="booksStore.borrowBook"
           @remove-book="booksStore.removeBook"

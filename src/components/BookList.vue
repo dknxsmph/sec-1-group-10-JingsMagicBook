@@ -1,8 +1,13 @@
 <script setup>
-defineProps({
+const props = defineProps({
   books: {
     type: Array,
     require: true,
+  },
+  filteredBooks: {
+    type: Array,
+    require: true,
+    default: [],
   },
   isAdmin: {
     type: Boolean,
@@ -11,6 +16,13 @@ defineProps({
 })
 
 defineEmits(['borrow-book', 'remove-book'])
+
+const shouldDisplayBook = (bookId) => {
+  return (
+    props.filteredBooks.length <= 0 ||
+    props.filteredBooks.some((book) => book.id === bookId)
+  )
+}
 
 /***
  * To transform string if the legnth longer than max length, then relace them with hellips.
@@ -24,7 +36,12 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
 </script>
 
 <template>
-  <div class="book-card" v-for="book in books" :key="book.id">
+  <div
+    class="book-card"
+    v-for="book in books"
+    :key="book.id"
+    v-show="shouldDisplayBook(book.id)"
+  >
     <img class="book-card-img" :src="book.bImg" />
     <p class="book-card-name">{{ shouldBookNameTruncate(book.bName, 27) }}</p>
     <div class="book-btn-group">
@@ -33,7 +50,10 @@ const shouldBookNameTruncate = (bookName, maxLength) => {
           BORROW THIS BOOK
         </button>
         <div v-if="isAdmin">
-          <button class="btn-add-to-cart" @click="$emit('remove-book', book.id)">
+          <button
+            class="btn-add-to-cart"
+            @click="$emit('remove-book', book.id)"
+          >
             REMOVE THIS BOOK
           </button>
         </div>

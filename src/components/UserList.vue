@@ -9,8 +9,17 @@ defineProps({
 </script>
 
 <template>
-  <div v-for="user in users" :key="user.id" class="user-box" @click="emit('loginUser', user)">
-    <img class="profile-img" :src="user.uImg" :alt="`${user.uName}'s Profile image`" />
+  <div
+    v-for="user in users"
+    :key="user.id"
+    class="user-box"
+    @click="emit('loginUser', user)"
+  >
+    <img
+      class="profile-img"
+      :src="user.uImg"
+      :alt="`${user.uName}'s Profile image`"
+    />
     <h3>{{ user.uName }}</h3>
   </div>
 </template>
@@ -36,7 +45,7 @@ img.profile-img {
   width: 100%;
 }
 
-.user-box>h3 {
+.user-box > h3 {
   letter-spacing: 2px;
   font-family: 'Skranji', cursive;
 }

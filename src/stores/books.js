@@ -3,15 +3,15 @@ import { ref } from 'vue'
 import { useUser } from '../stores/user.js'
 
 export const useBooks = defineStore('books', () => {
-  const books = ref(null)
+  const books = ref([])
 
   const removeBook = async (bookId) => {
     const res = await fetch(`http://localhost:5000/books/${bookId}`, {
       method: 'DELETE',
     })
-    if (res.status == 200) {
-      books.value = await booksStore.fetchBooks()
-      // alert('Book Id :' + bookId + ' removed')
+    if (res.status === 200) {
+      const bookIndex = books.value.findIndex((book) => book.id === bookId)
+      books.value.splice(bookIndex, 1)
     }
   }
 
@@ -47,20 +47,21 @@ export const useBooks = defineStore('books', () => {
   }
 
   const addBook = async (bookName, bookDesc) => {
+    const bookModel = {
+      bName: bookName,
+      bDesc: bookDesc,
+      bStatus: 'available',
+      bImg: '../src/assets/books-img/8.png',
+    }
     const res = await fetch(`http://localhost:5000/books/`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
       },
-      body: JSON.stringify({
-        bName: bookName,
-        bDesc: bookDesc,
-        bStatus: 'available',
-        bImg: '../src/assets/books-img/8.png',
-      }),
+      body: JSON.stringify(bookModel),
     })
-    if (res.status == 201) {
-      books.value = await booksStore.fetchBooks()
+    if (res.status === 201) {
+      await fetchBooks()
     }
   }
 

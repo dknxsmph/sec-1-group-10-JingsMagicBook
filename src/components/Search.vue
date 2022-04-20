@@ -1,8 +1,13 @@
 <script setup>
 import { ref } from 'vue'
-defineEmits(['click-search'])
+const emit = defineEmits(['click-search'])
 
 const inputSearch = ref('')
+
+const onSearch = () => {
+  emit('click-search', inputSearch.value)
+  inputSearch.value = ''
+}
 </script>
 
 <template>
@@ -20,7 +25,7 @@ const inputSearch = ref('')
         class="icon-search"
         src="../assets/search-icon.png"
         alt="search-icon"
-        @click="$emit('click-search', inputSearch)"
+        @click="onSearch"
       />
     </div>
   </div>
